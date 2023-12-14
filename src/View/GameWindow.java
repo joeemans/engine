@@ -1,3 +1,5 @@
+package View;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,6 +14,7 @@ final public class GameWindow extends JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setIconImage(new ImageIcon("GameWindowImage.jpg").getImage());
+
         //now with our JFrame all set, time to create a JMenu bar to add functionalities to our game
         JMenuBar menuBar = new JMenuBar();
         fillMenuBar(menuBar);
