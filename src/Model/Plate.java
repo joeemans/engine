@@ -8,7 +8,7 @@ public class Plate extends ImageObject implements Faller{
     }
 
     @Override
-    public void freefall() {
+    public void freeFall() {
             setY( getY() + FALLING_DECREMENT);
     }
 }
