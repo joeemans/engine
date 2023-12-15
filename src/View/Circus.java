@@ -49,7 +49,7 @@ public class Circus implements World {
                 int randomX = (int)(Math.random() * screenWidth);
                 int randomY = (int)(Math.random() * screenHeight) / 5;
                 int randomType = (int)(Math.random()*3)+1;
-                movableObjects.add(new ImageObject(randomX,randomY, Type.getByValue(randomType)));
+                movableObjects.add(new Plate(randomX,randomY, Type.getByValue(randomType)));
             }
         }
         for (GameObject object : movableObjects){
