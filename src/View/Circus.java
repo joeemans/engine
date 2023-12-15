@@ -21,7 +21,7 @@ public class Circus implements World {
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
 
-        movableObjects.add(new Clown(screenWidth / 2, screenHeight / 2));
+        controllableObjects.add(new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70));
 
     }
 
