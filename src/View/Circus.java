@@ -106,6 +106,6 @@ public class Circus implements World {
 
     @Override
     public int getControlSpeed() {
-        return 0;
+        return 5;
     }
 }

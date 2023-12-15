@@ -18,9 +18,9 @@ public class Clown extends ImageObject implements PlateCatcher {
     public boolean catchPlate() {
         return true;
     }
-    @Override
-    public void setX(int x) {
-        super.setX(x+10);
-    }
+//    @Override
+////    public void setX(int x) {
+////        super.setX(x+10);
+////    }
 
 }
