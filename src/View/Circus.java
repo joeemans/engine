@@ -21,6 +21,8 @@ public class Circus implements World {
     private final List<GameObject> movableObjects = new LinkedList<>();
     private final List<GameObject> controllableObjects = new LinkedList<>();
 
+    Clown clown;
+
     public Circus(int screenWidth, int screenHeight) {
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
@@ -28,7 +30,8 @@ public class Circus implements World {
         countingTime = startingTime;
 
         constantObjects.add(new ImageObject(0,0, Type.BACKGROUND));
-        controllableObjects.add(new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70));
+        clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70);
+        controllableObjects.add(clown);
 
         for ( int i = 0  ; i < STARTING_PLATES ; i++){
             int randomX = (int)(Math.random() * screenWidth - 10);
@@ -60,16 +63,33 @@ public class Circus implements World {
             GameObject currentObject = objectIterator.next();
             if (currentObject instanceof Faller)
                 ((Faller) currentObject).freeFall();
-            if (currentObject instanceof PlateCatcher && ((PlateCatcher) currentObject).catchPlate()){
-                constantObjects.add(currentObject);
+
+            if (clown.catchPlateWithLeft(currentObject)){
+                System.out.println("CAUGHT WITH LEFT!");
+                controllableObjects.add(currentObject);
                 objectIterator.remove();
+                currentObject.setX(clown.getX());
+                currentObject.setY(clown.getY() - clown.getLeftTraySize()*10);
             }
+
+            else if (clown.catchPlateWithRight(currentObject)){
+                System.out.println("CAUGHT WITH RIGHT!");
+                controllableObjects.add(currentObject);
+                objectIterator.remove();
+                currentObject.setX(clown.getX() + clown.getWidth()/2);
+                currentObject.setY(clown.getY() - clown.getRightTraySize()*10);
+            }
+
             if (currentObject.getY() >= screenHeight){
                 objectIterator.remove();
                 System.out.println("Object removed");
             }
         }
         return true;
+    }
+
+    private boolean intersect(GameObject o1, GameObject o2){
+        return (Math.abs((o1.getX()+o1.getWidth()/2) - (o2.getX()+o2.getWidth()/2)) <= o1.getWidth()) && (Math.abs((o1.getY()+o1.getHeight()/2) - (o2.getY()+o2.getHeight()/2)) <= o1.getHeight());
     }
 
     @Override
