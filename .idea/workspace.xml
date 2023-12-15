@@ -4,21 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="added dynamic loading of images">
-      <change afterPath="$PROJECT_DIR$/resources/plate-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/plate-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/plate-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/plate-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Type.java" afterDir="false" />
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="added enums for Type and Color of Components">
+      <change afterPath="$PROJECT_DIR$/src/Model/DynamicImageLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/ImageLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blue-plate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/green-plate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/red-plate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/yellow-plate.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Clown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Clown.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Component.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -120,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702627734008</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added enums for Type and Color of Components">
+      <created>1702633590095</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702633590095</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,6 +138,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="added dynamic loading of images" />
-    <option name="LAST_COMMIT_MESSAGE" value="added dynamic loading of images" />
+    <MESSAGE value="added enums for Type and Color of Components" />
+    <option name="LAST_COMMIT_MESSAGE" value="added enums for Type and Color of Components" />
   </component>
 </project>

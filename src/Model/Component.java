@@ -27,13 +27,8 @@ public class Component implements GameObject {
         this.type = type;
         this.isVisible = true;
 
-        try {
-            //dynamic loading of images
-            //use of ImageIO.read allows reading an image file at runtime based on the provided file name
-            spriteImages[0] = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream(fileName)));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        DynamicImageLoader imageLoader = new DynamicImageLoader();
+        spriteImages[0] = imageLoader.loadImage(fileName);
 
     }
 
