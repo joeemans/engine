@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="added class for Dynamic Image Loader" />
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="-">
+      <change beforePath="$PROJECT_DIR$/src/Model/ImageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ImageObject.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,14 +69,12 @@
   }
 }</component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="Model" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\TOSHIBA\Desktop\engine\src" />
+      <recent name="C:\Users\TOSHIBA\Desktop\engine\resources" />
+      <recent name="C:\Users\TOSHIBA\Desktop\engine\src\Main" />
+      <recent name="C:\Users\TOSHIBA\Desktop\engine" />
       <recent name="C:\Users\matef\Desktop\engine" />
-      <recent name="C:\Users\matef\Desktop\engine\resources" />
-      <recent name="C:\Users\matef\Desktop\engine\src" />
-      <recent name="C:\Users\matef\Desktop\engine\src\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -122,13 +122,12 @@
       <option name="project" value="LOCAL" />
       <updated>1702640127225</updated>
     </task>
-    <task id="LOCAL-00004" summary="added class for Dynamic Image Loader">
-      <option name="closed" value="true" />
-      <created>1702650008041</created>
+    <task id="LOCAL-00004" summary="-">
+      <created>1702650643142</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1702650008041</updated>
+      <updated>1702650643142</updated>
     </task>
     <option name="localTasksCounter" value="5" />
     <servers />
@@ -152,6 +151,18 @@
     <MESSAGE value="added dynamic loading of images" />
     <MESSAGE value="added enums for Type and Color of Components" />
     <MESSAGE value="added class for Dynamic Image Loader" />
-    <option name="LAST_COMMIT_MESSAGE" value="added class for Dynamic Image Loader" />
+    <MESSAGE value="-" />
+    <option name="LAST_COMMIT_MESSAGE" value="-" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/View/Circus.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
