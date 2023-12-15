@@ -2,11 +2,9 @@ package View;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 final public class GameWindow extends JFrame {
-    private static final Dimension WINDOW_DIMENSION = new Dimension(900,700);
+    private static final Dimension WINDOW_DIMENSION = new Dimension(900, 700);
 
     public GameWindow() {
         setSize(WINDOW_DIMENSION);
@@ -25,22 +23,19 @@ final public class GameWindow extends JFrame {
         setVisible(true);
     }
 
-    private JPanel createBoardPanel(){
+    private JPanel createBoardPanel() {
         JPanel gamePanel = new JPanel();
         gamePanel.setPreferredSize(WINDOW_DIMENSION);
         return gamePanel;
     }
 
-    private void fillMenuBar(JMenuBar menuBar){
+    private void fillMenuBar(JMenuBar menuBar) {
         JMenu fileMenu = new JMenu("File");
         JMenu gameMenu = new JMenu("Game");
         JMenuItem exitMenuItem = new JMenuItem("Exit");
-        exitMenuItem.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //Exit application
-                System.exit(0);
-            }
+        exitMenuItem.addActionListener(e -> {
+            //Exit application
+            System.exit(0);
         });
         fileMenu.add(exitMenuItem);
         menuBar.add(fileMenu);

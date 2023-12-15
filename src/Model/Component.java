@@ -16,12 +16,12 @@ public class Component implements GameObject {
     private boolean isVisible;
 
     //convenience constructor that defaults the "type" to 0, when type isn't specified
-    Component(int x, int y, String fileName){
+    public Component(int x, int y, String fileName){
         this(x, y, fileName, Type.getByValue(0));
     }
 
     //constructor that allows specifying the "type"
-    Component(int x, int y, String fileName, Type type){
+    public Component(int x, int y, String fileName, Type type){
         this.x = x;
         this.y = y;
         this.type = type;

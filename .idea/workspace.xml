@@ -5,10 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="added class for Dynamic Image Loader">
+      <change afterPath="$PROJECT_DIR$/src/View/Circus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/clown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/plate-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/plate-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/plate-3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/plate-4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GameController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Clown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Clown.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Shape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Shape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/DynamicImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/DynamicImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,10 +84,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\TOSHIBA\Desktop\engine\src" />
+      <recent name="C:\Users\TOSHIBA\Desktop\engine\resources" />
+      <recent name="C:\Users\TOSHIBA\Desktop\engine\src\Main" />
+      <recent name="C:\Users\TOSHIBA\Desktop\engine" />
       <recent name="C:\Users\matef\Desktop\engine" />
-      <recent name="C:\Users\matef\Desktop\engine\resources" />
-      <recent name="C:\Users\matef\Desktop\engine\src" />
-      <recent name="C:\Users\matef\Desktop\engine\src\resources" />
     </key>
   </component>
   <component name="RunManager">
@@ -148,5 +159,16 @@
     <MESSAGE value="added enums for Type and Color of Components" />
     <MESSAGE value="added class for Dynamic Image Loader" />
     <option name="LAST_COMMIT_MESSAGE" value="added class for Dynamic Image Loader" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/View/Circus.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
