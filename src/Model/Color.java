@@ -5,7 +5,8 @@ public enum Color {
     BLUE(1),
     GREEN(2),
     RED(3),
-    YELLOW(4);
+    YELLOW(4),
+    WHITE(5);
 
     private final int value;
 

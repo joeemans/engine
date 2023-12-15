@@ -22,7 +22,7 @@ class PlatePool {
         for(int i=0; i<POOL_SIZE; i++){
             int randomX = (int) (Math.random() * circus.getWidth());
             int randomY = (int) (Math.random() * circus.getHeight()) / 5;
-            int randomType = (int) (Math.random() * 3) + 1;
+            int randomType = (int) (Math.random() * 4) + 1;
             circus.getMovableObjects().add(new Plate(randomX, randomY, Type.getByValue(randomType)));
         }
 
@@ -32,7 +32,7 @@ class PlatePool {
 
         int randomX = (int) (Math.random() * circus.getWidth());
         int randomY = (int) (Math.random() * circus.getHeight()) / 5;
-        int randomType = (int) (Math.random() * 3) + 1;
+        int randomType = (int) (Math.random() * 4) + 1;
 
         if(!plates.isEmpty()){
             Plate plate = plates.pop();
