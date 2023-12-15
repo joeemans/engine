@@ -26,7 +26,7 @@ public class ImageObject implements GameObject {
         this.isVisible = true;
 
         DynamicImageLoader imageLoader = new DynamicImageLoader();
-        spriteImages[0] = imageLoader.loadImage(type.getName() + "png");
+        spriteImages[0] = imageLoader.loadImage("resources/" + type.getName() + ".png");
     }
 
     //getters and setters for the instance variables
