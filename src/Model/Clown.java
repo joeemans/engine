@@ -1,7 +1,19 @@
 package Model;
-public class Clown extends Component{
+
+import eg.edu.alexu.csd.oop.game.GameObject;
+
+import java.util.ArrayList;
+
+public class Clown extends ImageObject implements PlateCatcher{
+    ArrayList <GameObject> leftTray = new ArrayList<>();
+    ArrayList <GameObject> rightTray = new ArrayList<>();
+
     public Clown(int x, int y) {
-        super(x, y, "resources/" + Type.CLOWN.getName() + ".png", Type.CLOWN);
+        super(x, y, Type.CLOWN);
     }
 
+    @Override
+    public void catchPlate() {
+
+    }
 }
