@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.DynamicImageLoader;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 import java.awt.image.BufferedImage;

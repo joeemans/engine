@@ -6,7 +6,7 @@ import java.security.Key;
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class Clown extends ImageObject implements PlateCatcher{
+public class Clown extends ImageObject implements PlateCatcher {
     Stack <GameObject> leftTray = new Stack<>();
     Stack <GameObject> rightTray = new Stack<>();
 

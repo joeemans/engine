@@ -1,12 +1,12 @@
 package Model;
 
 public enum Type {
-
     CLOWN(0, "clown"),
     BLUE_PLATE(1, "plate-1"),
     GREEN_PLATE(2, "plate-2"),
     RED_PLATE(3, "plate-3"),
-    YELLOW_PLATE(4, "plate-4");
+    YELLOW_PLATE(4, "plate-4"),
+    BACKGROUND(5, "background");
 
     private final int value;
     private final String name;

@@ -1,4 +1,5 @@
-package Model;
+package Controller;
+
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -12,7 +13,6 @@ public class DynamicImageLoader implements ImageLoader {
         try {
             //dynamic loading of images
             //use of ImageIO.read allows reading an image file at runtime based on the provided file name
-            System.out.println(fileName);
             return ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream(fileName)));
         } catch (IOException e) {
             throw new RuntimeException(e);

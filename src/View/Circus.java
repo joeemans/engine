@@ -27,10 +27,11 @@ public class Circus implements World {
         startingTime = System.currentTimeMillis();
         countingTime = startingTime;
 
+        constantObjects.add(new ImageObject(0,0, Type.BACKGROUND));
         controllableObjects.add(new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70));
 
         for ( int i = 0  ; i < STARTING_PLATES ; i++){
-            int randomX = (int)(Math.random() * screenWidth);
+            int randomX = (int)(Math.random() * screenWidth - 10);
             int randomY = (int)(Math.random() * screenHeight) / 5;
             int randomType = (int)(Math.random()*3)+1;
             movableObjects.add(new Plate(randomX,randomY, Type.getByValue(randomType)));
@@ -51,7 +52,7 @@ public class Circus implements World {
                 int randomX = (int)(Math.random() * screenWidth);
                 int randomY = (int)(Math.random() * screenHeight) / 5;
                 int randomType = (int)(Math.random()*3)+1;
-                movableObjects.add(new ImageObject(randomX,randomY, Type.getByValue(randomType)));
+                movableObjects.add(new Plate(randomX,randomY, Type.getByValue(randomType)));
             }
         }
         Iterator <GameObject> objectIterator = movableObjects.iterator();
