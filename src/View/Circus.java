@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Circus implements World {
+public class Circus implements World,Observer {
     private static volatile Circus instance;
     private final static int screenWidth = 900;
     private final static int screenHeight = 700;
@@ -140,4 +140,9 @@ public class Circus implements World {
         public int getControlSpeed () {
             return 5;
         }
+
+    @Override
+    public void updateScore() {
+
     }
+}

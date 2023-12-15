@@ -1,17 +1,22 @@
 package Model;
 
+import View.Circus;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 import java.security.Key;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class Clown extends ImageObject implements PlateCatcher {
     private Stack <GameObject> leftTray = new Stack<>();
     private Stack <GameObject> rightTray = new Stack<>();
+    private List<Observer> observers = new ArrayList<>();
 
     public Clown(int x, int y) {
+
         super(x, y, Type.CLOWN);
+        addObserver(Circus.getGameInstance());
     }
 
     @Override
@@ -19,6 +24,7 @@ public class Clown extends ImageObject implements PlateCatcher {
         if(Math.abs((plate.getX()+plate.getWidth()/2) - (this.getX()+this.getWidth()/2) - 50) <= plate.getWidth() &&
                 (Math.abs((plate.getY()+plate.getHeight()/2) - (this.getY()+this.getHeight()/2) + 70) <= plate.getHeight())){
             leftTray.add(plate);
+            notifyObservers();
             return true;
         }
         return false;
@@ -29,6 +35,7 @@ public class Clown extends ImageObject implements PlateCatcher {
         if(Math.abs((plate.getX()+plate.getWidth()/2) - (this.getX()+this.getWidth()/2) + 50) <= plate.getWidth() &&
                 (Math.abs((plate.getY()+plate.getHeight()/2) - (this.getY()+this.getHeight()/2) + 70) <= plate.getHeight())){
             rightTray.add(plate);
+            notifyObservers();
             return true;
         }
         return false;
@@ -40,6 +47,20 @@ public class Clown extends ImageObject implements PlateCatcher {
 
     public int getRightTraySize(){
         return rightTray.size();
+    }
+
+    public void addObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    private void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.updateScore();
+        }
     }
 
 }
