@@ -1,11 +1,8 @@
 package View;
 
-import Model.Clown;
-import Model.Faller;
-import Model.ImageObject;
+import Model.*;
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
-import Model.Type;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +32,7 @@ public class Circus implements World {
             int randomX = (int)(Math.random() * screenWidth);
             int randomY = (int)(Math.random() * screenHeight) / 5;
             int randomType = (int)(Math.random()*3)+1;
-            movableObjects.add(new ImageObject(randomX,randomY, Type.getByValue(randomType)));
+            movableObjects.add(new Plate(randomX,randomY, Type.getByValue(randomType)));
         }
     }
 
