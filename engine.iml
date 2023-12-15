@@ -15,6 +15,8 @@
         <JAVADOC />
         <SOURCES>
           <root url="jar://$MODULE_DIR$/engine_v3.jar!/" />
+          <root url="jar://$MODULE_DIR$/engine_v3.jar!/" />
+          <root url="file://$MODULE_DIR$/src" />
         </SOURCES>
       </library>
     </orderEntry>

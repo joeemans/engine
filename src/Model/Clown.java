@@ -2,6 +2,7 @@ package Model;
 
 import eg.edu.alexu.csd.oop.game.GameObject;
 
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -17,4 +18,9 @@ public class Clown extends ImageObject implements PlateCatcher{
     public boolean catchPlate() {
         return true;
     }
+    @Override
+    public void setX(int x) {
+        super.setX(x+10);
+    }
+
 }

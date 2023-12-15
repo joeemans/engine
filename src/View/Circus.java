@@ -35,6 +35,7 @@ public class Circus implements World {
             int randomType = (int)(Math.random()*3)+1;
             movableObjects.add(new Plate(randomX,randomY, Type.getByValue(randomType)));
         }
+
     }
 
     @Override
