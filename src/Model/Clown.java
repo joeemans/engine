@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.Controller;
 import View.Circus;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
@@ -13,7 +14,7 @@ public class Clown extends ImageObject implements PlateCatcher {
     private Stack <GameObject> rightTray = new Stack<>();
     private List<Observer> observers = new ArrayList<>();
 
-    public Clown(int x, int y, Circus instance) {
+    public Clown(int x, int y, Controller instance) {
         super(x, y, Type.CLOWN);
         addObserver(instance);
     }
