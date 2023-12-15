@@ -40,7 +40,7 @@ public class Circus implements World,Observer {
             countingTime = startingTime;
 
             constantObjects.add(new ImageObject(0, 0, Type.BACKGROUND));
-            clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70);
+            clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70,this);
             controllableObjects.add(clown);
 
             for (int i = 0; i < STARTING_PLATES; i++) {

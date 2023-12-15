@@ -13,10 +13,9 @@ public class Clown extends ImageObject implements PlateCatcher {
     private Stack <GameObject> rightTray = new Stack<>();
     private List<Observer> observers = new ArrayList<>();
 
-    public Clown(int x, int y) {
-
+    public Clown(int x, int y, Circus instance) {
         super(x, y, Type.CLOWN);
-        addObserver(Circus.getGameInstance());
+        addObserver(instance);
     }
 
     @Override
