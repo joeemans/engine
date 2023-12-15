@@ -28,7 +28,7 @@ public enum Type {
         return type.value;
     }
 
-    static Type getByValue(int value) {
+    public static Type getByValue(int value) {
         for (Type type : Type.values()) {
             if (type.value == value) {
                 return type;
