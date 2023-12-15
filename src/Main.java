@@ -21,7 +21,7 @@ public class Main {
         menu.add(pauseMenuItem);
         menu.add(resumeMenuItem);
         menuBar.add(menu);
-        GameController gc =  GameEngine.start("Circus of Plates", new Circus(900, 700), menuBar, Color.BLACK);
+        GameController gc =  GameEngine.start("Circus of Plates", Circus.getGameInstance(), menuBar, Color.BLACK);
 
         pauseMenuItem.addActionListener(e -> {
             // Handle the "Pause" menu item action
@@ -37,7 +37,8 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Handle the "Resume" menu item action
-                gc.changeWorld(new Circus(900, 700));
+                Circus.disposeInstance();
+                gc.changeWorld(Circus.getGameInstance());
             }
         });
         }
