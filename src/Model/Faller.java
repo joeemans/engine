@@ -1,5 +1,5 @@
 package Model;
 
 public interface Faller {
-    void freefall();
+    void freeFall();
 }

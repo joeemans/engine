@@ -3,17 +3,18 @@ package Model;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Clown extends ImageObject implements PlateCatcher{
-    ArrayList <GameObject> leftTray = new ArrayList<>();
-    ArrayList <GameObject> rightTray = new ArrayList<>();
+    Stack <GameObject> leftTray = new Stack<>();
+    Stack <GameObject> rightTray = new Stack<>();
 
     public Clown(int x, int y) {
         super(x, y, Type.CLOWN);
     }
 
     @Override
-    public void catchPlate() {
-
+    public boolean catchPlate() {
+        return true;
     }
 }

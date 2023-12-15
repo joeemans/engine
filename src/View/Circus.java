@@ -4,7 +4,8 @@ import Model.*;
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Circus implements World {
@@ -16,9 +17,9 @@ public class Circus implements World {
     private long countingTime;
 
     //List is an Interface which is implemented by ArrayList
-    private final List<GameObject> constantObjects = new ArrayList<>();
-    private final List<GameObject> movableObjects = new ArrayList<>();
-    private final List<GameObject> controllableObjects = new ArrayList<>();
+    private final List<GameObject> constantObjects = new LinkedList<>();
+    private final List<GameObject> movableObjects = new LinkedList<>();
+    private final List<GameObject> controllableObjects = new LinkedList<>();
 
     public Circus(int screenWidth, int screenHeight) {
         this.screenWidth = screenWidth;
@@ -52,9 +53,19 @@ public class Circus implements World {
                 movableObjects.add(new ImageObject(randomX,randomY, Type.getByValue(randomType)));
             }
         }
-        for (GameObject object : movableObjects){
-            if (object instanceof Faller)
-                ((Faller) object).freefall();
+        Iterator <GameObject> objectIterator = movableObjects.iterator();
+        while (objectIterator.hasNext()){
+            GameObject currentObject = objectIterator.next();
+            if (currentObject instanceof Faller)
+                ((Faller) currentObject).freeFall();
+            if (currentObject instanceof PlateCatcher && ((PlateCatcher) currentObject).catchPlate()){
+                constantObjects.add(currentObject);
+                objectIterator.remove();
+            }
+            if (currentObject.getY() >= screenHeight){
+                objectIterator.remove();
+                System.out.println("Object removed");
+            }
         }
         return true;
     }
