@@ -22,6 +22,8 @@ public class Circus implements World,Observer {
     private final List<GameObject> movableObjects = new LinkedList<>();
     private final List<GameObject> controllableObjects = new LinkedList<>();
 
+    PlatePool platePool;
+
     Clown clown;
 
     public static Circus getGameInstance() {
@@ -36,6 +38,7 @@ public class Circus implements World,Observer {
     }
 
     private Circus() {
+
             startingTime = System.currentTimeMillis();
             countingTime = startingTime;
 
@@ -43,12 +46,14 @@ public class Circus implements World,Observer {
             clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70,this);
             controllableObjects.add(clown);
 
-            for (int i = 0; i < STARTING_PLATES; i++) {
+            /*for (int i = 0; i < STARTING_PLATES; i++) {
                 int randomX = (int) (Math.random() * screenWidth - 10);
                 int randomY = (int) (Math.random() * screenHeight) / 5;
                 int randomType = (int) (Math.random() * 3) + 1;
                 movableObjects.add(new Plate(randomX, randomY, Type.getByValue(randomType)));
-            }
+            }*/
+
+        platePool = new PlatePool(this);
 
         }
 
@@ -70,6 +75,7 @@ public class Circus implements World,Observer {
                     int randomY = (int) (Math.random() * screenHeight) / 5;
                     int randomType = (int) (Math.random() * 3) + 1;
                     movableObjects.add(new Plate(randomX, randomY, Type.getByValue(randomType)));
+                    platePool.borrowPlate(randomX, randomY, randomType);
                 }
             }
             Iterator<GameObject> objectIterator = movableObjects.iterator();
@@ -84,7 +90,9 @@ public class Circus implements World,Observer {
                     objectIterator.remove();
                     currentObject.setX(clown.getX());
                     currentObject.setY(clown.getY() - clown.getLeftTraySize() * 10);
-                } else if (clown.catchPlateWithRight(currentObject)) {
+                }
+
+                else if (clown.catchPlateWithRight(currentObject)) {
                     System.out.println("CAUGHT WITH RIGHT!");
                     controllableObjects.add(currentObject);
                     objectIterator.remove();
@@ -93,8 +101,8 @@ public class Circus implements World,Observer {
                 }
 
                 if (currentObject.getY() >= screenHeight) {
-                    objectIterator.remove();
                     System.out.println("Object removed");
+                    platePool.returnPlate((Plate) currentObject);
                 }
             }
             return true;

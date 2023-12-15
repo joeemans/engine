@@ -20,7 +20,7 @@ public class Clown extends ImageObject implements PlateCatcher {
 
     @Override
     public boolean catchPlateWithLeft(GameObject plate) {
-        if(Math.abs((plate.getX()+plate.getWidth()/2) - (this.getX()+this.getWidth()/2) - 50) <= plate.getWidth() &&
+        if(Math.abs((plate.getX()+plate.getWidth()/2) - (this.getX()+this.getWidth()/2) + 50) <= plate.getWidth() &&
                 (Math.abs((plate.getY()+plate.getHeight()/2) - (this.getY()+this.getHeight()/2) + 70) <= plate.getHeight())){
             leftTray.add(plate);
             notifyObservers();
@@ -31,7 +31,7 @@ public class Clown extends ImageObject implements PlateCatcher {
 
     @Override
     public boolean catchPlateWithRight(GameObject plate) {
-        if(Math.abs((plate.getX()+plate.getWidth()/2) - (this.getX()+this.getWidth()/2) + 50) <= plate.getWidth() &&
+        if(Math.abs((plate.getX()+plate.getWidth()/2) - (this.getX()+this.getWidth()/2) - 50) <= plate.getWidth() &&
                 (Math.abs((plate.getY()+plate.getHeight()/2) - (this.getY()+this.getHeight()/2) + 70) <= plate.getHeight())){
             rightTray.add(plate);
             notifyObservers();
