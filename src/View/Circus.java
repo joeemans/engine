@@ -1,7 +1,6 @@
 package View;
 
 import Model.Clown;
-import Model.Component;
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
 

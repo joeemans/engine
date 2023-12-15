@@ -1,12 +1,10 @@
 package Model;
+
 import eg.edu.alexu.csd.oop.game.GameObject;
-import javax.imageio.ImageIO;
+
 import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.Objects;
 
-public class Component implements GameObject {
-
+public class ImageObject implements GameObject {
     //store an array of sprite images to allow creating animations with an image object
     private static final int MAX_STATE = 1;
     private final BufferedImage[] spriteImages = new BufferedImage[MAX_STATE];
@@ -15,21 +13,20 @@ public class Component implements GameObject {
     private Type type;
     private boolean isVisible;
 
-    //convenience constructor that defaults the "type" to 0, when type isn't specified
-    public Component(int x, int y, String fileName){
-        this(x, y, fileName, Type.getByValue(0));
-    }
+//    //convenience constructor that defaults the "type" to 0, when type isn't specified
+//    public ImageObject(int x, int y, String fileName){
+//        this(x, y, fileName, Type.getByValue(0));
+//    }
 
     //constructor that allows specifying the "type"
-    public Component(int x, int y, String fileName, Type type){
+    public ImageObject(int x, int y, Type type){
         this.x = x;
         this.y = y;
         this.type = type;
         this.isVisible = true;
 
         DynamicImageLoader imageLoader = new DynamicImageLoader();
-        spriteImages[0] = imageLoader.loadImage(fileName);
-
+        spriteImages[0] = imageLoader.loadImage(type.getName() + "png");
     }
 
     //getters and setters for the instance variables
