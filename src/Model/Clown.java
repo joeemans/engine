@@ -8,8 +8,10 @@ import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
+import Controller.Subject;
+import Controller.Observer;
 
-public class Clown extends ImageObject implements PlateCatcher {
+public class Clown extends ImageObject implements PlateCatcher, Subject {
     private Stack <GameObject> leftTray = new Stack<>();
     private Stack <GameObject> rightTray = new Stack<>();
     private List<Observer> observers = new ArrayList<>();
@@ -57,7 +59,7 @@ public class Clown extends ImageObject implements PlateCatcher {
         observers.remove(observer);
     }
 
-    private void notifyObservers() {
+    public void notifyObservers() {
         for (Observer observer : observers) {
             observer.updateScore();
         }

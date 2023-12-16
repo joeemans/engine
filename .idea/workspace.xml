@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="modified plates sizes">
-      <change afterPath="$PROJECT_DIR$/src/resources/plate-5.png" afterDir="false" />
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="implemented Observer for controller">
+      <change afterPath="$PROJECT_DIR$/src/Controller/Observer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/Subject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Color.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/PlatePool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/PlatePool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/plate-1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/plate-1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/plate-2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/plate-2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/plate-3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/plate-3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/plate-4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/plate-4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GameState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Clown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Clown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Observer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Circus.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,6 +110,7 @@
       <option name="presentableId" value="Default" />
       <updated>1702427653181</updated>
       <workItem from="1702556107846" duration="3796000" />
+      <workItem from="1702753085931" duration="2549000" />
     </task>
     <task id="LOCAL-00001" summary="added dynamic loading of images">
       <created>1702627734008</created>
@@ -204,6 +205,7 @@
     <MESSAGE value="." />
     <MESSAGE value=".." />
     <MESSAGE value="modified plates sizes" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified plates sizes" />
+    <MESSAGE value="implemented Observer for controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented Observer for controller" />
   </component>
 </project>

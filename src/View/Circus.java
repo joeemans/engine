@@ -4,12 +4,15 @@ import Model.*;
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import Controller.Controller;
+import Controller.Subject;
+import Controller.Observer;
 
-public class Circus implements World {
+public class Circus implements World, Subject {
     private static volatile Circus instance;
     private final static int screenWidth = 900;
     private final static int screenHeight = 700;
@@ -27,7 +30,7 @@ public class Circus implements World {
 
     private Clown clown;
 
-    private Controller controller;
+    private ArrayList<Observer> observers = new ArrayList<>();
 
     public static Circus getGameInstance() {
         if (instance == null) {
@@ -41,24 +44,16 @@ public class Circus implements World {
     }
 
     private Circus() {
-            startingTime = System.currentTimeMillis();
-            countingTime = startingTime;
+        startingTime = System.currentTimeMillis();
+        countingTime = startingTime;
 
-            controller = new Controller(this);
-            constantObjects.add(new ImageObject(0, 0, Type.BACKGROUND));
-            clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70, controller);
-            controllableObjects.add(clown);
+        constantObjects.add(new ImageObject(0, 0, Type.BACKGROUND));
 
-            /*for (int i = 0; i < STARTING_PLATES; i++) {
-                int randomX = (int) (Math.random() * screenWidth - 10);
-                int randomY = (int) (Math.random() * screenHeight) / 5;
-                int randomType = (int) (Math.random() * 3) + 1;
-                movableObjects.add(new Plate(randomX, randomY, Type.getByValue(randomType)));
-            }*/
+        clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70, controller);
+
+        controllableObjects.add(clown);
 
         platePool = new PlatePool(this);
-
-
     }
 
     public static void disposeInstance() {
@@ -76,7 +71,8 @@ public class Circus implements World {
 
     @Override
     public boolean refresh() {
-        return controller.refresh();
+        notifyObservers();
+        return true;
     }
 
     private boolean intersect (GameObject o1, GameObject o2){
@@ -120,4 +116,20 @@ public class Circus implements World {
         return 5;
     }
 
+    @Override
+    public void addObserver(Observer observer) {
+
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.refresh();
+        }
+    }
 }
