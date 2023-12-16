@@ -44,6 +44,7 @@ public class Circus implements World, Subject {
     }
 
     private Circus() {
+
         startingTime = System.currentTimeMillis();
         countingTime = startingTime;
 
