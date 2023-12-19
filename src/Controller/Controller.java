@@ -2,7 +2,7 @@ package Controller;
 
 
 import Model.*;
-import View.Circus;
+import Model.Circus;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 import java.util.Iterator;
@@ -25,9 +25,8 @@ public class Controller implements Observer {
 
     public Controller(Circus circus) {
         this.circus = circus;
-
         this.difficulty = new EasyDifficulty();
-
+        circus.addObserver(this);
         startingTime = System.currentTimeMillis();
         countingTime = startingTime;
     }
@@ -35,7 +34,7 @@ public class Controller implements Observer {
     public Controller(Circus circus, DifficultyState difficulty) {
         this.circus = circus;
         this.difficulty = difficulty;
-
+        circus.addObserver(this);
         startingTime = System.currentTimeMillis();
         countingTime = startingTime;
     }
@@ -45,15 +44,15 @@ public class Controller implements Observer {
     }
 
     public boolean refresh() {
-        List<GameObject> movableObjects = circus.getMovableObjects();
-        List<GameObject> controllableObjects = circus.getControlableObjects();
-        Clown clown = circus.getClown();
+        List<GameObject> movableObjects = getCircus().getMovableObjects();
+        List<GameObject> controllableObjects = getCircus().getControlableObjects();
+        Clown clown = getCircus().getClown();
 
         if (System.currentTimeMillis() > countingTime + 1000){
             countingTime = System.currentTimeMillis();
             for ( int i = 0  ; i < PLATES_INCREMENTED ; i++){
-                int randomX = (int)(Math.random() * circus.getWidth());
-                int randomY = (int)(Math.random() * circus.getHeight()) / 5;
+                int randomX = (int)(Math.random() * getCircus().getWidth());
+                int randomY = (int)(Math.random() * getCircus().getHeight()) / 5;
                 int randomType = (int)(Math.random()*3)+1;
                 movableObjects.add(new Plate(randomX,randomY, Type.getByValue(randomType)));
             }
@@ -70,6 +69,8 @@ public class Controller implements Observer {
                 objectIterator.remove();
                 currentObject.setX(clown.getX());
                 currentObject.setY(clown.getY() - clown.getLeftTraySize()*10);
+                assert currentObject instanceof Plate;
+                ((Plate) currentObject). setInTray();
             }
 
             else if (clown.catchPlateWithRight(currentObject)){
@@ -78,9 +79,11 @@ public class Controller implements Observer {
                 objectIterator.remove();
                 currentObject.setX(clown.getX() + clown.getWidth()/2);
                 currentObject.setY(clown.getY() - clown.getRightTraySize()*10);
+                assert currentObject instanceof Plate;
+                ((Plate) currentObject). setInTray();
             }
 
-            if (currentObject.getY() >= circus.getHeight()){
+            if (currentObject.getY() >= getCircus().getHeight()){
                 objectIterator.remove();
                 System.out.println("Object removed");
             }
@@ -93,6 +96,9 @@ public class Controller implements Observer {
     }
 
 
+    public Circus getCircus() {
+        return circus;
+    }
 }
 
 

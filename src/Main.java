@@ -1,4 +1,5 @@
-import View.Circus;
+import Controller.Controller;
+import Model.Circus;
 
 
 import eg.edu.alexu.csd.oop.game.GameEngine;
@@ -21,7 +22,8 @@ public class Main {
         menu.add(pauseMenuItem);
         menu.add(resumeMenuItem);
         menuBar.add(menu);
-        GameController gc =  GameEngine.start("Circus of Plates", Circus.getGameInstance(), menuBar, Color.BLACK);
+        Controller controller = new Controller(Circus.getGameInstance());
+        GameController gc =  GameEngine.start("Circus of Plates", controller.getCircus(), menuBar, Color.BLACK);
 
         pauseMenuItem.addActionListener(e -> {
             // Handle the "Pause" menu item action

@@ -1,10 +1,7 @@
 package Model;
 
-import Controller.Controller;
-import View.Circus;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -16,9 +13,8 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
     private Stack <GameObject> rightTray = new Stack<>();
     private List<Observer> observers = new ArrayList<>();
 
-    public Clown(int x, int y, Controller instance) {
+    public Clown(int x, int y) {
         super(x, y, Type.CLOWN);
-        addObserver(instance);
     }
 
     @Override
@@ -41,6 +37,11 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void setY(int y) {
+        //
     }
 
     public int getLeftTraySize(){

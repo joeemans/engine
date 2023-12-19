@@ -1,14 +1,13 @@
-package View;
+package Model;
 
-import Model.*;
+import Model.PlatePool;
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import Controller.Controller;
+
 import Controller.Subject;
 import Controller.Observer;
 
@@ -50,7 +49,7 @@ public class Circus implements World, Subject {
 
         constantObjects.add(new ImageObject(0, 0, Type.BACKGROUND));
 
-        clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70, controller);
+        clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70);
 
         controllableObjects.add(clown);
 
@@ -119,12 +118,12 @@ public class Circus implements World, Subject {
 
     @Override
     public void addObserver(Observer observer) {
-
+        observers.add(observer);
     }
 
     @Override
     public void removeObserver(Observer observer) {
-
+        observers.remove(observer);
     }
 
     @Override

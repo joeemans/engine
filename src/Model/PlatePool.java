@@ -1,7 +1,7 @@
-package View;
+package Model;
 
+import Model.Circus;
 import Model.Plate;
-import Model.PlateCatcher;
 import Model.Type;
 
 import java.util.Stack;

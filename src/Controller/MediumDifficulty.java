@@ -1,6 +1,6 @@
 package Controller;
 
-public class Medium implements DifficultyState  {
+public class MediumDifficulty implements DifficultyState  {
     public double getBombRate() {
         return 0.5;
     }
