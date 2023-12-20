@@ -1,9 +1,6 @@
 package Model.Shapes;
 
-import Model.ImageObject;
-import Model.PlateCatcher;
-import Model.ShapeLoader;
-import Model.Type;
+import Model.*;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 import java.util.ArrayList;
@@ -13,9 +10,13 @@ import Controller.Subject;
 import Controller.Observer;
 
 public class Clown extends ImageObject implements PlateCatcher, Subject {
-    private Stack <GameObject> leftTray = new Stack<>();
-    private Stack <GameObject> rightTray = new Stack<>();
+    public Stack <GameObject> leftTray = new Stack<>();
+    public Stack <GameObject> rightTray = new Stack<>();
     private List<Observer> observers = new ArrayList<>();
+    private int consecutivePlatesOnLeft = 1;
+    private int consecutivePlatesOnRight = 1;
+    public boolean platesEmptied;
+
 
     public Clown(int x, int y) {
         super(x, y, Type.CLOWN);
@@ -30,38 +31,111 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
         return catchPlateWithLeft(plate) || catchPlateWithRight(plate);
     }
 
-    private boolean catchPlateWithLeft(Plate plate) {
+    public boolean
+    checkConsecutivePlatesOnRight(Color color){
+        if(!this.rightTray.isEmpty()) {
+            if (((Plate) this.rightTray.peek()).getType().getColor().equals(color)) {
+                consecutivePlatesOnRight++;
+                if (consecutivePlatesOnRight == 3) {
+                    System.out.println("remove right");
+                    notifyObservers();
+                    removeConsecutivePlatesOnRight();
+                    platesEmptied = true;
+                    return true;
+                }
+            }
+            else consecutivePlatesOnRight = 1;
+        }
+        return false;
+    }
+    public boolean checkConsecutivePlatesOnLeft(Color color){
+        if(!this.leftTray.isEmpty()) {
+            if (((Plate) this.leftTray.peek()).getType().getColor().equals(color)) {
+                consecutivePlatesOnLeft++;
+                System.out.println(consecutivePlatesOnLeft);
+                if (consecutivePlatesOnLeft == 3) {
+                    System.out.println("remove right");
+                    notifyObservers();
+                    removeConsecutivePlatesOnLeft();
+                    platesEmptied = true;
+                    return true;
+                }
+            }
+            else consecutivePlatesOnLeft = 1;
+            System.out.println(consecutivePlatesOnLeft);
+        }
+        return false;
+    }
+    public void removeConsecutivePlatesOnRight(){
+        for(int i=1; i<=2; i++){
+            updateRightTray();
+            System.out.println("Relayed");
+//            Plate plate = (Plate)this.rightTray.pop();
+            //plate.setIsVisible(false);
+        }
+        consecutivePlatesOnRight = 1;
+    }
+
+    public void removeConsecutivePlatesOnLeft(){
+        for(int i=1; i<=2; i++){
+            updateLeftTray();
+            System.out.println("Relayed");
+//            Plate plate = (Plate)this.leftTray.pop();
+            //plate.setIsVisible(false);
+        }
+        consecutivePlatesOnLeft = 1;
+    }
+
+
+    public boolean catchPlateWithLeft(Plate plate) {
 
         if(Math.abs(this.getX() + plate.getWidth()/2 - plate.getX() - plate.getWidth()/2) <= plate.getWidth()/2
                 && (375 - (getLeftTraySize() * 10)) - plate.getY() <= 10
                 && plate.getY() < 375 - (getLeftTraySize() * 10)
         ){
             System.out.println("CAUGHT WITH LEFT!");
-
+            if(!checkConsecutivePlatesOnLeft(plate.getType().getColor())) {
+//            checkConsecutivePlatesOnLeft(plate.getType().getColor());
+            plate.setX(getX());
+            plate.setY(getY() - 20 - getLeftTraySize() * 10);
+            plate.setInLeftTray();
             plate.setX(this.getX());
-            plate.setY(this.getY() - 30 - this.getLeftTraySize()*10);
+            plate.setY(this.getY() - 30 - this.getLeftTraySize() * 10);
             plate.setInLeftTray();
             leftTray.add(plate);
-            notifyObservers();
+//            if(consecutivePlatesOnLeft == 3){
+//                removeConsecutivePlatesOnLeft();
+//            }
+            }
             return true;
         }
         return false;
 
     }
 
-    private boolean catchPlateWithRight(Plate plate) {
+    public boolean catchPlateWithRight(Plate plate) {
 
         if(Math.abs(plate.getX() + plate.getWidth() - this.getX() - this.getWidth()) <= plate.getWidth()/2
                 && (375 - (getRightTraySize() * 10)) - plate.getY() <= 10
                 && plate.getY() < 375 - (getRightTraySize() * 10) ) {
 
             System.out.println("CAUGHT WITH RIGHT!");
-            plate.setX((this.getX() + this.getWidth()/2));
-            plate.setY(this.getY() - 10 - this.getRightTraySize()*10);
+
+            if(! checkConsecutivePlatesOnRight(((plate).getType().getColor()))) {
+//            checkConsecutivePlatesOnRight(((plate).getType().getColor()));
+            plate.setX(getX() + getWidth() / 2);
+            plate.setY(getY() - 10 - getRightTraySize() * 10);
+            plate.setInRightTray();
+
+            plate.setX((this.getX() + this.getWidth() / 2));
+            plate.setY(this.getY() - 10 - this.getRightTraySize() * 10);
             plate.setInRightTray();
             rightTray.add(plate);
-            notifyObservers();
-            return true;
+//            if ( consecutivePlatesOnRight == 3 ){
+//                removeConsecutivePlatesOnRight();
+//            }
+            }
+                return true;
         }
         return false;
 
@@ -94,4 +168,18 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
         }
     }
 
+    public void updateLeftTray() {
+        System.out.println(11);
+        for (Observer observer : observers) {
+            System.out.println("IM HEREE");
+            observer.leftTrayUpdate();
+        }
+    }
+
+    public void updateRightTray() {
+        for (Observer observer : observers) {
+            System.out.println("IM HEREE");
+            observer.rightTrayUpdate();
+        }
+    }
 }

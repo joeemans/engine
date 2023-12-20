@@ -40,7 +40,7 @@ public enum Type {
         return null;
     }
 
-    Color getColor(){
+    public Color getColor(){
         return Color.getByValue(this.value);
     }
 

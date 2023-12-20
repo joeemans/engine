@@ -34,6 +34,7 @@ public class Controller implements Observer {
     public Controller(Circus circus) {
         this.circus = circus;
         circus.addObserver(this);
+        circus.getClown().addObserver(this);
 
         this.timeSinceLastPlate = System.currentTimeMillis();
         this.timeSinceLastBomb = System.currentTimeMillis();
@@ -95,8 +96,37 @@ public class Controller implements Observer {
                 Plate plate = (Plate) currentObject;
 
                 if (clown.catchPlate(plate)) {
-                    controllableObjects.add(currentObject);
+                    if(!circus.getClown().platesEmptied) {
+                        controllableObjects.add(currentObject);
+                    }
+                    circus.getClown().platesEmptied = false;
                     objectIterator.remove();
+
+//                    if (clown.catchPlateWithLeft((Plate)currentObject)){
+//
+//                        if(!clown.checkConsecutivePlatesOnLeft(((Plate) currentObject).getType().getColor())){
+//                            controllableObjects.add(currentObject);
+//                            objectIterator.remove();
+//                            currentObject.setX(clown.getX());
+//                            currentObject.setY(clown.getY() - 20 - clown.getLeftTraySize()*10);
+//                            ((Plate) currentObject).setInLeftTray();
+//                        }
+//
+//                    }
+//
+//                    else if (clown.catchPlateWithRight((Plate) currentObject)){
+//
+//                        if(! clown.checkConsecutivePlatesOnRight(((Plate) currentObject).getType().getColor())){
+//                            controllableObjects.add(currentObject);
+//                            objectIterator.remove();
+//                            currentObject.setX(clown.getX() + clown.getWidth()/2);
+//                            currentObject.setY(clown.getY() -10 - clown.getRightTraySize()*10);
+//                            assert currentObject instanceof Plate;
+//                            ((Plate) currentObject).setInRightTray();
+//
+//                        }
+
+//                    }
                 }
             }
 
@@ -160,6 +190,21 @@ public class Controller implements Observer {
 
     public void updateScore() {
 
+    }
+
+    @Override
+    public void leftTrayUpdate() {
+        System.out.println("in leftTrayUpdate");
+        Plate plate = (Plate) circus.getClown().leftTray.pop();
+        circus.getControlableObjects().remove(plate);
+    }
+
+    @Override
+    public void rightTrayUpdate() {
+        System.out.println("in rightTrayUpdate");
+        Plate plate = (Plate) circus.getClown().rightTray.pop();
+        System.out.println(circus.getClown().rightTray.size());
+        circus.getControlableObjects().remove(plate);
     }
 
     public Circus getCircus() {
