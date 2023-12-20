@@ -1,8 +1,12 @@
-package Model;
+package Model.Shapes;
 
+import Model.Faller;
+import Model.ImageObject;
+import Model.ShapeLoader;
+import Model.Type;
 import eg.edu.alexu.csd.oop.game.*;
 
-public class Plate extends ImageObject implements Faller {
+public class Plate extends ImageObject implements Faller, ShapeLoader {
     private static final int FALLING_DECREMENT = 1;
     private boolean inRightTray;
     private boolean inLeftTray;
@@ -11,6 +15,10 @@ public class Plate extends ImageObject implements Faller {
 
     public Plate(int x, int y, Type type) {
         super(x, y, type);
+    }
+
+    public Plate(){
+        super(0,0,Type.BLUE_PLATE);
     }
 
     @Override
@@ -56,4 +64,8 @@ public class Plate extends ImageObject implements Faller {
         this.screenWidth = screenWidth;
     }
 
+    @Override
+    public ImageObject loadShape(int x, int y) {
+        return new Plate(x ,y ,Type.BLUE_PLATE);
+    }
 }

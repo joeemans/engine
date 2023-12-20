@@ -1,6 +1,6 @@
 package Model;
 
-import Model.PlatePool;
+import Model.Shapes.Clown;
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
 
@@ -48,6 +48,13 @@ public class Circus implements World, Subject {
         countingTime = startingTime;
 
         constantObjects.add(new ImageObject(0, 0, Type.BACKGROUND));
+
+       // DynamicFileLinker.shapesLoader();
+       // clown = (Clown) DynamicFileLinker.getUserControlledShape();
+      //  clown.setY(screenHeight / 2 + 70);
+      //  clown.setX(screenWidth / 2 - 110);
+
+     //   clown.loadShape(screenWidth / 2 - 110, screenHeight / 2 + 70);
 
         clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70);
 

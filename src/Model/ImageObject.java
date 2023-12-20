@@ -30,6 +30,7 @@ public class ImageObject implements GameObject {
         spriteImages[0] = imageLoader.loadImage("resources/" + type.getName() + ".png");
     }
 
+
     //getters and setters for the instance variables
     @Override
     public int getX() {

@@ -1,8 +1,6 @@
 package Model;
 
-import Model.Circus;
-import Model.Plate;
-import Model.Type;
+import Model.Shapes.Plate;
 
 import java.util.Stack;
 

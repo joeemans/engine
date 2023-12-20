@@ -1,5 +1,9 @@
-package Model;
+package Model.Shapes;
 
+import Model.ImageObject;
+import Model.PlateCatcher;
+import Model.ShapeLoader;
+import Model.Type;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 import java.util.ArrayList;
@@ -8,7 +12,7 @@ import java.util.Stack;
 import Controller.Subject;
 import Controller.Observer;
 
-public class Clown extends ImageObject implements PlateCatcher, Subject {
+public class Clown extends ImageObject implements PlateCatcher, Subject, ShapeLoader {
     private Stack <GameObject> leftTray = new Stack<>();
     private Stack <GameObject> rightTray = new Stack<>();
     private List<Observer> observers = new ArrayList<>();
@@ -16,6 +20,12 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
     public Clown(int x, int y) {
         super(x, y, Type.CLOWN);
     }
+
+    public Clown(){
+        super(0,0,Type.CLOWN);
+    }
+
+
 
     @Override
     public boolean catchPlateWithLeft(GameObject plate) {
@@ -70,4 +80,8 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
         }
     }
 
+    @Override
+    public ImageObject loadShape(int x, int y) {
+        return new Clown(x , y);
+    }
 }

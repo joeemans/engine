@@ -5,9 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="modified plates sizes">
+      <change afterPath="$PROJECT_DIR$/src/Model/DynamicFileLinker.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Model/ShapeLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_1_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_1_20_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_2_59_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_2_59_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_01_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_01_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_36_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_36_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_7_30_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_7_30_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_8_33_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_8_33_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Plate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Plate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Shapes/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Circus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Clown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Shapes/Clown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ImageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/ImageObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Plate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Shapes/Plate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/PlatePool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PlatePool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +35,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -79,6 +93,7 @@
       <recent name="C:\Users\matef\Desktop\engine" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="Model.Shapes" />
       <recent name="" />
     </key>
   </component>

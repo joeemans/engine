@@ -3,6 +3,9 @@ package Controller;
 
 import Model.*;
 import Model.Circus;
+import Model.Shapes.Bomb;
+import Model.Shapes.Clown;
+import Model.Shapes.Plate;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 import java.util.Iterator;
