@@ -4,12 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="Game almost functional&#10;Added detonation aspect, yet to be improved">
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="Added Factory DP&#10;Now DynamicFileLinker is functional, but need to update our program to match its usage">
+      <change afterPath="$PROJECT_DIR$/src/Model/Detonator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Observer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Clown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Shapes/Clown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HardDifficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HardDifficulty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Circus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/DynamicFileLinker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/DynamicFileLinker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Shapes/Bomb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/explosion.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/explosion.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -192,15 +197,7 @@
       <option name="project" value="LOCAL" />
       <updated>1703088789229</updated>
     </task>
-    <task id="LOCAL-00012" summary="Game almost functional&#10;Added detonation aspect, yet to be improved">
-      <option name="closed" value="true" />
-      <created>1703093737795</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1703093737795</updated>
-    </task>
-    <option name="localTasksCounter" value="13" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +225,6 @@
     <MESSAGE value="modified plates sizes" />
     <MESSAGE value="First introduction of DynamicFileLinker&#10;Will need more work to be actually functional" />
     <MESSAGE value="Added Factory DP&#10;Now DynamicFileLinker is functional, but need to update our program to match its usage" />
-    <MESSAGE value="Game almost functional&#10;Added detonation aspect, yet to be improved" />
-    <option name="LAST_COMMIT_MESSAGE" value="Game almost functional&#10;Added detonation aspect, yet to be improved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Factory DP&#10;Now DynamicFileLinker is functional, but need to update our program to match its usage" />
   </component>
 </project>
