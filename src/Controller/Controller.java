@@ -46,6 +46,7 @@ public class Controller implements Observer {
         this(circus);
         setDifficulty(difficulty);
         this.harderOverTime = false;
+        circus.getMovableObjects().add(new Plate(circus.getClown().getX(), 100, Type.BLUE_PLATE));
     }
 
     public void setDifficulty(DifficultyState difficulty) {
@@ -75,6 +76,7 @@ public class Controller implements Observer {
             if (currentObject instanceof Faller)
                 ((Faller) currentObject).freeFall();
 
+
 //            if (currentObject instanceof Bomb) {
 //                Bomb bomb = (Bomb) currentObject;
 //
@@ -87,24 +89,13 @@ public class Controller implements Observer {
 //
 //            }
 
-            if (clown.catchPlateWithLeft(currentObject)){
-                System.out.println("CAUGHT WITH LEFT!");
-                controllableObjects.add(currentObject);
-                objectIterator.remove();
-                currentObject.setX(clown.getX());
-                currentObject.setY(clown.getY() - 20 - clown.getLeftTraySize()*10);
-                assert currentObject instanceof Plate;
-                ((Plate) currentObject).setInLeftTray();
-            }
+            if (currentObject instanceof Plate) {
+                Plate plate = (Plate) currentObject;
 
-            else if (clown.catchPlateWithRight(currentObject)){
-                System.out.println("CAUGHT WITH RIGHT!");
-                controllableObjects.add(currentObject);
-                objectIterator.remove();
-                currentObject.setX(clown.getX() + clown.getWidth()/2);
-                currentObject.setY(clown.getY() -10 - clown.getRightTraySize()*10);
-                assert currentObject instanceof Plate;
-                ((Plate) currentObject). setInRightTray();
+                if (clown.catchPlate(plate)) {
+                    controllableObjects.add(currentObject);
+                    objectIterator.remove();
+                }
             }
 
             if (currentObject.getY() >= getCircus().getHeight()){

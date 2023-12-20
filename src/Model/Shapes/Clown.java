@@ -25,13 +25,23 @@ public class Clown extends ImageObject implements PlateCatcher, Subject, ShapeLo
         super(0,0,Type.CLOWN);
     }
 
-
-
     @Override
-    public boolean catchPlateWithLeft(GameObject plate) {
+    public boolean catchPlate(Plate plate) {
+        return catchPlateWithLeft(plate) || catchPlateWithRight(plate);
+    }
+
+
+    private boolean catchPlateWithLeft(Plate plate) {
 
         if(Math.abs(this.getX() + plate.getWidth()/2 - plate.getX() - plate.getWidth()/2) <= plate.getWidth()/2
-                && (Math.abs((plate.getY()+plate.getHeight()/2) - (this.getY()+this.getHeight()/2) + 70 + getLeftTraySize() * 7) <= plate.getHeight())){
+                && (375 - (getLeftTraySize() * 10)) - plate.getY() <= 10
+                && plate.getY() < 375 - (getLeftTraySize() * 10)
+        ){
+            System.out.println("CAUGHT WITH LEFT!");
+
+            plate.setX(this.getX());
+            plate.setY(this.getY() - 30 - this.getLeftTraySize()*10);
+            plate.setInLeftTray();
             leftTray.add(plate);
             notifyObservers();
             return true;
@@ -40,11 +50,16 @@ public class Clown extends ImageObject implements PlateCatcher, Subject, ShapeLo
 
     }
 
-    @Override
-    public boolean catchPlateWithRight(GameObject plate) {
+    private boolean catchPlateWithRight(Plate plate) {
 
         if(Math.abs(plate.getX() + plate.getWidth() - this.getX() - this.getWidth()) <= plate.getWidth()/2
-                && ((Math.abs((plate.getY()+plate.getHeight()/2) - (this.getY()+this.getHeight()/2) + 70 + getRightTraySize() * 7) <= plate.getHeight()))){
+                && (375 - (getRightTraySize() * 10)) - plate.getY() <= 10
+                && plate.getY() < 375 - (getRightTraySize() * 10) ) {
+
+            System.out.println("CAUGHT WITH RIGHT!");
+            plate.setX((this.getX() + this.getWidth()/2));
+            plate.setY(this.getY() - 10 - this.getRightTraySize()*10);
+            plate.setInRightTray();
             rightTray.add(plate);
             notifyObservers();
             return true;
