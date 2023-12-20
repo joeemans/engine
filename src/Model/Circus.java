@@ -25,7 +25,7 @@ public class Circus implements World, Subject {
     private final List<GameObject> movableObjects = new LinkedList<>();
     private final List<GameObject> controllableObjects = new LinkedList<>();
 
-    PlatePool platePool;
+//    PlatePool platePool;
 
     private Clown clown;
 
@@ -53,7 +53,7 @@ public class Circus implements World, Subject {
 
         controllableObjects.add(clown);
 
-        platePool = new PlatePool(this);
+//        platePool = new PlatePool(this);
     }
 
     public static void disposeInstance() {

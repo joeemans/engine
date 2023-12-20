@@ -1,6 +1,7 @@
 import Controller.Controller;
 import Model.Circus;
-
+import Controller.HardDifficulty;
+import Controller.EasyDifficulty;
 
 import eg.edu.alexu.csd.oop.game.GameEngine;
 import eg.edu.alexu.csd.oop.game.GameEngine.*;
@@ -22,7 +23,8 @@ public class Main {
         menu.add(pauseMenuItem);
         menu.add(resumeMenuItem);
         menuBar.add(menu);
-        Controller controller = new Controller(Circus.getGameInstance());
+        Controller controller = new Controller(Circus.getGameInstance(),new HardDifficulty()) ;
+
         GameController gc =  GameEngine.start("Circus of Plates", controller.getCircus(), menuBar, Color.BLACK);
 
         pauseMenuItem.addActionListener(e -> {

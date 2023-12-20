@@ -2,7 +2,7 @@ package Model;
 
 import eg.edu.alexu.csd.oop.game.*;
 
-public class Plate extends ImageObject implements Faller{
+public class Plate extends ImageObject implements Faller {
     private static final int FALLING_DECREMENT = 1;
     private boolean inRightTray;
     private boolean inLeftTray;

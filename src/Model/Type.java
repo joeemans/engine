@@ -6,7 +6,9 @@ public enum Type {
     GREEN_PLATE(2, "plate-2"),
     RED_PLATE(3, "plate-3"),
     YELLOW_PLATE(4, "plate-4"),
-    BACKGROUND(5, "background");
+    BACKGROUND(5, "background"),
+    BOMB(6, "bomb"),
+    EXPLOSION(7, "explosion");
 
     private final int value;
     private final String name;
