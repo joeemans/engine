@@ -9,7 +9,7 @@ import java.util.Stack;
 import Controller.Subject;
 import Controller.Observer;
 
-public class Clown extends ImageObject implements PlateCatcher, Subject {
+public class Clown extends ImageObject implements PlateCatcher, BombCatcher, Subject {
     //public Stack <GameObject> leftTray = new Stack<>();
    // public Stack <GameObject> rightTray = new Stack<>();
 
@@ -33,6 +33,7 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
         return catchPlateWithLeft(plate) || catchPlateWithRight(plate);
     }
 
+    @Override
     public boolean catchPlateWithLeft(Plate plate) {
 
         if(Math.abs(this.getX() + plate.getWidth()/2 - plate.getX() - plate.getWidth()/2) <= plate.getWidth()/2
@@ -42,11 +43,8 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
 
             if(!checkConsecutivePlatesOnLeft(plate.getType().getColor())) {
 //            checkConsecutivePlatesOnLeft(plate.getType().getColor());
-                plate.setX(getX());
-                plate.setY(getY() - 20 - getLeftTraySize() * 10);
-                plate.setInLeftTray();
                 plate.setX(this.getX());
-                plate.setY(this.getY() - 30 - this.getLeftTraySize() * 10);
+                plate.setY(this.getY() - 40 - this.getLeftTraySize() * 10);
                 plate.setInLeftTray();
                 leftTray.add(plate);
 //            if(consecutivePlatesOnLeft == 3){
@@ -59,6 +57,7 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
 
     }
 
+    @Override
     public boolean catchPlateWithRight(Plate plate) {
 
         if(Math.abs(plate.getX() + plate.getWidth() - this.getX() - this.getWidth()) <= plate.getWidth()/2
@@ -69,10 +68,6 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
 
             if(! checkConsecutivePlatesOnRight(((plate).getType().getColor()))) {
 //            checkConsecutivePlatesOnRight(((plate).getType().getColor()));
-                plate.setX(getX() + getWidth() / 2);
-                plate.setY(getY() - 10 - getRightTraySize() * 10);
-                plate.setInRightTray();
-
                 plate.setX((this.getX() + this.getWidth() / 2));
                 plate.setY(this.getY() - 10 - this.getRightTraySize() * 10);
                 plate.setInRightTray();
@@ -184,6 +179,53 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
         return rightTray.size();
     }
 
+    @Override
+    public boolean catchBomb(Bomb bomb) {
+        return catchBombWithLeft(bomb) || catchBombWithRight(bomb);
+    }
+
+    @Override
+    public boolean catchBombWithLeft(Bomb bomb) {
+        if(Math.abs(this.getX() + bomb.getWidth()/2 - bomb.getX() - bomb.getWidth()/2) <= bomb.getWidth()/2
+                && (375 - (getLeftTraySize() * 10)) - bomb.getY() <= 10
+                && bomb.getY() < 375 - (getLeftTraySize() * 10)
+        ){
+            bomb.detonate();
+            removeAllPlatesOnLeft();
+            return true;
+        }
+
+        return false;
+
+    }
+
+    @Override
+    public boolean catchBombWithRight(Bomb bomb) {
+        if(Math.abs(bomb.getX() + bomb.getWidth() - this.getX() - this.getWidth()) <= bomb.getWidth()/2
+                && (375 - (getRightTraySize() * 10)) - bomb.getY() <= 10
+                && bomb.getY() < 375 - (getRightTraySize() * 10) ){
+
+            bomb.detonate();
+            removeAllPlatesOnRight();
+            return true;
+        }
+
+        return false;
+
+    }
+
+    private void removeAllPlatesOnLeft(){
+        while(!leftTray.isEmpty()){
+            updateLeftTray();
+        }
+    }
+
+    private void removeAllPlatesOnRight(){
+        while(!rightTray.isEmpty()) {
+            updateRightTray();
+        }
+    }
+
     public void addObserver(Observer observer) {
         observers.add(observer);
     }
@@ -197,5 +239,6 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
             observer.updateScore();
         }
     }
+
 
 }

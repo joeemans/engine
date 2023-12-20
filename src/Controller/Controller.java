@@ -3,6 +3,7 @@ package Controller;
 
 import Model.*;
 import Model.Circus;
+import Model.Shapes.Bomb;
 import Model.Shapes.Clown;
 import Model.Shapes.Plate;
 import eg.edu.alexu.csd.oop.game.GameObject;
@@ -77,10 +78,46 @@ public class Controller implements Observer {
                 ((Faller) currentObject).freeFall();
 
 
-            if (currentObject instanceof Detonator && circus.intersect(currentObject,clown)) {
+           /* if (currentObject instanceof Detonator && circus.intersect(currentObject,clown)) {
                 ((Detonator) currentObject).detonate();
                 constantObjects.add(currentObject);
                 objectIterator.remove();
+            }*/
+
+            if(currentObject instanceof Bomb){
+
+                Bomb bomb = (Bomb) currentObject;
+
+                if (clown.catchBomb(bomb)) {
+                    bomb.detonate();
+                    constantObjects.add(currentObject);
+                    objectIterator.remove();
+//                    if (clown.catchPlateWithLeft((Plate)currentObject)){
+//
+//                        if(!clown.checkConsecutivePlatesOnLeft(((Plate) currentObject).getType().getColor())){
+//                            controllableObjects.add(currentObject);
+//                            objectIterator.remove();
+//                            currentObject.setX(clown.getX());
+//                            currentObject.setY(clown.getY() - 20 - clown.getLeftTraySize()*10);
+//                            ((Plate) currentObject).setInLeftTray();
+//                        }
+//
+//                    }
+//
+//                    else if (clown.catchPlateWithRight((Plate) currentObject)){
+//
+//                        if(! clown.checkConsecutivePlatesOnRight(((Plate) currentObject).getType().getColor())){
+//                            controllableObjects.add(currentObject);
+//                            objectIterator.remove();
+//                            currentObject.setX(clown.getX() + clown.getWidth()/2);
+//                            currentObject.setY(clown.getY() -10 - clown.getRightTraySize()*10);
+//                            assert currentObject instanceof Plate;
+//                            ((Plate) currentObject).setInRightTray();
+//
+//                        }
+
+//
+                }
             }
 //
 //                if () { //Clown Catches Bomb

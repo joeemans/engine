@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="changed stack to array list">
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment=".">
+      <change afterPath="$PROJECT_DIR$/src/Model/BombCatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Circus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/PlateCatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PlateCatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Clown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Shapes/Clown.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -202,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703106587358</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary=".">
+      <created>1703106904641</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1703106904641</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -225,13 +237,13 @@
     <MESSAGE value="added enums for Type and Color of Components" />
     <MESSAGE value="added class for Dynamic Image Loader" />
     <MESSAGE value="-" />
-    <MESSAGE value="." />
     <MESSAGE value=".." />
     <MESSAGE value="modified plates sizes" />
     <MESSAGE value="First introduction of DynamicFileLinker&#10;Will need more work to be actually functional" />
     <MESSAGE value="Added Factory DP&#10;Now DynamicFileLinker is functional, but need to update our program to match its usage" />
     <MESSAGE value="fixed positions (again)" />
     <MESSAGE value="changed stack to array list" />
-    <option name="LAST_COMMIT_MESSAGE" value="changed stack to array list" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
