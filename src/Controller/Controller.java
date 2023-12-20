@@ -60,6 +60,10 @@ public class Controller implements Observer {
         Iterator<GameObject> objectIterator = movableObjects.iterator();
         while (objectIterator.hasNext()){
             GameObject currentObject = objectIterator.next();
+
+            ((Plate)currentObject).setClownWidth(clown.getWidth());
+            ((Plate)currentObject).setScreenWidth(circus.getWidth());
+
             if (currentObject instanceof Faller)
                 ((Faller) currentObject).freeFall();
 
@@ -70,7 +74,7 @@ public class Controller implements Observer {
                 currentObject.setX(clown.getX());
                 currentObject.setY(clown.getY() - clown.getLeftTraySize()*10);
                 assert currentObject instanceof Plate;
-                ((Plate) currentObject). setInTray();
+                ((Plate) currentObject). setInLeftTray();
             }
 
             else if (clown.catchPlateWithRight(currentObject)){
@@ -80,7 +84,7 @@ public class Controller implements Observer {
                 currentObject.setX(clown.getX() + clown.getWidth()/2);
                 currentObject.setY(clown.getY() - clown.getRightTraySize()*10);
                 assert currentObject instanceof Plate;
-                ((Plate) currentObject). setInTray();
+                ((Plate) currentObject). setInRightTray();
             }
 
             if (currentObject.getY() >= getCircus().getHeight()){

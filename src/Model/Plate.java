@@ -4,7 +4,10 @@ import eg.edu.alexu.csd.oop.game.*;
 
 public class Plate extends ImageObject implements Faller{
     private static final int FALLING_DECREMENT = 1;
-    private boolean inTray;
+    private boolean inRightTray;
+    private boolean inLeftTray;
+    private int clownWidth;
+    private int screenWidth;
 
     public Plate(int x, int y, Type type) {
         super(x, y, type);
@@ -17,16 +20,40 @@ public class Plate extends ImageObject implements Faller{
 
     @Override
     public void setY(int y) {
-      if (!isInTray()){
+      if (!isInRightTray() && !isInLeftTray()){
           super.setY(y);
       }
     }
 
-    public boolean isInTray() {
-        return inTray;
+    @Override
+    public void setX(int x){
+        if(!(isInLeftTray() && x >= this.screenWidth - this.clownWidth + this.getWidth()/32) &&
+        !(isInRightTray() && x <= this.clownWidth/2 + this.getWidth()/32 - 5)){
+           super.setX(x);
+        }
     }
 
-    public void setInTray() {
-        this.inTray = true;
+    public boolean isInRightTray() {
+        return inRightTray;
     }
+    public boolean isInLeftTray() {
+        return inLeftTray;
+    }
+
+    public void setInRightTray() {
+        this.inRightTray = true;
+    }
+
+    public void setInLeftTray() {
+        this.inLeftTray = true;
+    }
+
+    public void setClownWidth(int clownWidth){
+        this.clownWidth = clownWidth;
+    }
+
+    public void setScreenWidth(int screenWidth){
+        this.screenWidth = screenWidth;
+    }
+
 }

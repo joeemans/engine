@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="implemented Observer for controller">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="modified plates sizes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Medium.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MediumDifficulty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Clown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Clown.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Plate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Plate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Circus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/PlatePool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PlatePool.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +79,6 @@
       <recent name="C:\Users\matef\Desktop\engine" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="Model" />
       <recent name="" />
     </key>
   </component>
@@ -112,7 +105,6 @@
       <option name="presentableId" value="Default" />
       <updated>1702427653181</updated>
       <workItem from="1702556107846" duration="3796000" />
-      <workItem from="1702753085931" duration="2549000" />
     </task>
     <task id="LOCAL-00001" summary="added dynamic loading of images">
       <created>1702627734008</created>
@@ -207,7 +199,6 @@
     <MESSAGE value="." />
     <MESSAGE value=".." />
     <MESSAGE value="modified plates sizes" />
-    <MESSAGE value="implemented Observer for controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented Observer for controller" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified plates sizes" />
   </component>
 </project>
