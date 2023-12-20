@@ -194,16 +194,13 @@ public class Controller implements Observer {
 
     @Override
     public void leftTrayUpdate() {
-        System.out.println("in leftTrayUpdate");
-        Plate plate = (Plate) circus.getClown().leftTray.pop();
+        Plate plate = (Plate) circus.getClown().leftTray.remove(circus.getClown().getLeftTraySize()-1);
         circus.getControlableObjects().remove(plate);
     }
 
     @Override
     public void rightTrayUpdate() {
-        System.out.println("in rightTrayUpdate");
-        Plate plate = (Plate) circus.getClown().rightTray.pop();
-        System.out.println(circus.getClown().rightTray.size());
+        Plate plate = (Plate) circus.getClown().rightTray.remove(circus.getClown().getRightTraySize()-1);
         circus.getControlableObjects().remove(plate);
     }
 

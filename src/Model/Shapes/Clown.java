@@ -10,11 +10,13 @@ import Controller.Subject;
 import Controller.Observer;
 
 public class Clown extends ImageObject implements PlateCatcher, Subject {
-    public Stack <GameObject> leftTray = new Stack<>();
-    public Stack <GameObject> rightTray = new Stack<>();
+    //public Stack <GameObject> leftTray = new Stack<>();
+   // public Stack <GameObject> rightTray = new Stack<>();
+
+    public ArrayList<GameObject> leftTray = new ArrayList<>();
+    public ArrayList<GameObject> rightTray = new ArrayList<>();
+
     private List<Observer> observers = new ArrayList<>();
-    private int consecutivePlatesOnLeft = 1;
-    private int consecutivePlatesOnRight = 1;
     public boolean platesEmptied;
 
 
@@ -31,13 +33,11 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
         return catchPlateWithLeft(plate) || catchPlateWithRight(plate);
     }
 
-    public boolean
-    checkConsecutivePlatesOnRight(Color color){
-        if(!this.rightTray.isEmpty()) {
-            if (((Plate) this.rightTray.peek()).getType().getColor().equals(color)) {
+    public boolean checkConsecutivePlatesOnRight(Color color) {
+        /*if(!this.rightTray.isEmpty()) {
+            if (((Plate) this.rightTray.get(getRightTraySize()-1)).getType().getColor().equals(color)) {
                 consecutivePlatesOnRight++;
                 if (consecutivePlatesOnRight == 3) {
-                    System.out.println("remove right");
                     notifyObservers();
                     removeConsecutivePlatesOnRight();
                     platesEmptied = true;
@@ -45,16 +45,28 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
                 }
             }
             else consecutivePlatesOnRight = 1;
+        }*/
+
+        if(this.rightTray.size() < 2){
+            return false;
         }
-        return false;
+
+        for (int i = 0; i < 2; i++) {
+            if (!((Plate) this.rightTray.get(getRightTraySize() - i - 1)).getType().getColor().equals(color)) {
+                return false;
+            }
+        }
+            notifyObservers();
+            removeConsecutivePlatesOnRight();
+            platesEmptied = true;
+            return true;
     }
+
     public boolean checkConsecutivePlatesOnLeft(Color color){
-        if(!this.leftTray.isEmpty()) {
-            if (((Plate) this.leftTray.peek()).getType().getColor().equals(color)) {
+        /*if(!this.leftTray.isEmpty()) {
+            if (((Plate) this.leftTray.get(getLeftTraySize()-1)).getType().getColor().equals(color)) {
                 consecutivePlatesOnLeft++;
-                System.out.println(consecutivePlatesOnLeft);
                 if (consecutivePlatesOnLeft == 3) {
-                    System.out.println("remove right");
                     notifyObservers();
                     removeConsecutivePlatesOnLeft();
                     platesEmptied = true;
@@ -62,28 +74,34 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
                 }
             }
             else consecutivePlatesOnLeft = 1;
-            System.out.println(consecutivePlatesOnLeft);
         }
-        return false;
+        return false;*/
+
+        if(this.leftTray.size() < 2){
+            return false;
+        }
+
+        for (int i = 0; i < 2; i++) {
+            if (!((Plate) this.leftTray.get(getLeftTraySize() - i - 1)).getType().getColor().equals(color)) {
+                return false;
+            }
+        }
+            notifyObservers();
+            removeConsecutivePlatesOnLeft();
+            platesEmptied = true;
+            return true;
+
     }
     public void removeConsecutivePlatesOnRight(){
         for(int i=1; i<=2; i++){
             updateRightTray();
-            System.out.println("Relayed");
-//            Plate plate = (Plate)this.rightTray.pop();
-            //plate.setIsVisible(false);
         }
-        consecutivePlatesOnRight = 1;
     }
 
     public void removeConsecutivePlatesOnLeft(){
         for(int i=1; i<=2; i++){
             updateLeftTray();
-            System.out.println("Relayed");
-//            Plate plate = (Plate)this.leftTray.pop();
-            //plate.setIsVisible(false);
         }
-        consecutivePlatesOnLeft = 1;
     }
 
 
@@ -93,7 +111,7 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
                 && (375 - (getLeftTraySize() * 10)) - plate.getY() <= 10
                 && plate.getY() < 375 - (getLeftTraySize() * 10)
         ){
-            System.out.println("CAUGHT WITH LEFT!");
+
             if(!checkConsecutivePlatesOnLeft(plate.getType().getColor())) {
 //            checkConsecutivePlatesOnLeft(plate.getType().getColor());
             plate.setX(getX());
@@ -169,16 +187,13 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
     }
 
     public void updateLeftTray() {
-        System.out.println(11);
         for (Observer observer : observers) {
-            System.out.println("IM HEREE");
             observer.leftTrayUpdate();
         }
     }
 
     public void updateRightTray() {
         for (Observer observer : observers) {
-            System.out.println("IM HEREE");
             observer.rightTrayUpdate();
         }
     }
