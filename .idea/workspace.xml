@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment=".">
-      <change afterPath="$PROJECT_DIR$/src/Model/BombCatcher.java" afterDir="false" />
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="added bombing plates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Subject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Circus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/PlateCatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/PlateCatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Clown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Shapes/Clown.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,7 +214,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703106904641</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added bombing plates">
+      <created>1703110304959</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1703110304959</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,6 +251,7 @@
     <MESSAGE value="fixed positions (again)" />
     <MESSAGE value="changed stack to array list" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="added bombing plates" />
+    <option name="LAST_COMMIT_MESSAGE" value="added bombing plates" />
   </component>
 </project>

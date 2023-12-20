@@ -28,6 +28,7 @@ public class Circus implements World, Subject {
 //    PlatePool platePool;
 
     private Clown clown;
+    long score = 0;
 
     private ArrayList<Observer> observers = new ArrayList<>();
 
@@ -76,10 +77,10 @@ public class Circus implements World, Subject {
         return true;
     }
 
-    public boolean intersect(GameObject o1, GameObject o2){
+    /*public boolean intersect(GameObject o1, GameObject o2){
         return (Math.abs((o1.getX() + o1.getWidth() / 2) - (o2.getX() + o2.getWidth() / 2)) <= o1.getWidth())
                 && (Math.abs((o1.getY() + o1.getHeight() / 2) - (o2.getY() + o2.getHeight() / 2)) <= o1.getHeight());
-    }
+    }*/
 
     @Override
     public List<GameObject> getConstantObjects () {
@@ -109,9 +110,12 @@ public class Circus implements World, Subject {
 
     @Override
     public String getStatus () {
-        return null;
+        return "Score: " + score;
     }
 
+    public void setScore(long score){
+        this.score = score;
+    }
 
     @Override
     public int getControlSpeed () {
@@ -133,5 +137,20 @@ public class Circus implements World, Subject {
         for (Observer observer : observers) {
             observer.refresh();
         }
+    }
+
+    @Override
+    public void notifyObserversOnCatchingPlates() {
+        //
+    }
+
+    @Override
+    public void notifyObserversOnCatchingConsecutivePlates() {
+        //
+    }
+
+    @Override
+    public void notifyObserversOnCatchingBomb() {
+        //
     }
 }

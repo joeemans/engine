@@ -47,6 +47,7 @@ public class Clown extends ImageObject implements PlateCatcher, BombCatcher, Sub
                 plate.setY(this.getY() - 40 - this.getLeftTraySize() * 10);
                 plate.setInLeftTray();
                 leftTray.add(plate);
+                notifyObserversOnCatchingPlates();
 //            if(consecutivePlatesOnLeft == 3){
 //                removeConsecutivePlatesOnLeft();
 //            }
@@ -72,6 +73,7 @@ public class Clown extends ImageObject implements PlateCatcher, BombCatcher, Sub
                 plate.setY(this.getY() - 10 - this.getRightTraySize() * 10);
                 plate.setInRightTray();
                 rightTray.add(plate);
+                notifyObserversOnCatchingPlates();
 //            if ( consecutivePlatesOnRight == 3 ){
 //                removeConsecutivePlatesOnRight();
 //            }
@@ -105,7 +107,7 @@ public class Clown extends ImageObject implements PlateCatcher, BombCatcher, Sub
                 return false;
             }
         }
-            notifyObservers();
+            notifyObserversOnCatchingConsecutivePlates();
             removeConsecutivePlatesOnRight();
             platesEmptied = true;
             return true;
@@ -135,7 +137,7 @@ public class Clown extends ImageObject implements PlateCatcher, BombCatcher, Sub
                 return false;
             }
         }
-            notifyObservers();
+            notifyObserversOnCatchingConsecutivePlates();
             removeConsecutivePlatesOnLeft();
             platesEmptied = true;
             return true;
@@ -192,6 +194,7 @@ public class Clown extends ImageObject implements PlateCatcher, BombCatcher, Sub
         ){
             bomb.detonate();
             removeAllPlatesOnLeft();
+            notifyObserversOnCatchingBomb();
             return true;
         }
 
@@ -206,6 +209,7 @@ public class Clown extends ImageObject implements PlateCatcher, BombCatcher, Sub
                 && bomb.getY() < 375 - (getRightTraySize() * 10) ){
 
             bomb.detonate();
+            notifyObserversOnCatchingBomb();
             removeAllPlatesOnRight();
             return true;
         }
@@ -230,13 +234,34 @@ public class Clown extends ImageObject implements PlateCatcher, BombCatcher, Sub
         observers.add(observer);
     }
 
+    @Override
     public void removeObserver(Observer observer) {
         observers.remove(observer);
     }
 
+    @Override
     public void notifyObservers() {
+        //
+    }
+
+    @Override
+    public void notifyObserversOnCatchingPlates() {
         for (Observer observer : observers) {
-            observer.updateScore();
+            observer.incrementScore(1);
+        }
+    }
+
+    @Override
+    public void notifyObserversOnCatchingConsecutivePlates() {
+        for (Observer observer : observers) {
+            observer.incrementScore(10);
+        }
+    }
+
+    @Override
+    public void notifyObserversOnCatchingBomb() {
+        for (Observer observer : observers) {
+            observer.incrementScore(-10);
         }
     }
 

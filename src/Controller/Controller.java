@@ -11,8 +11,6 @@ import eg.edu.alexu.csd.oop.game.GameObject;
 import java.util.Iterator;
 import java.util.List;
 
-
-
 public class Controller implements Observer {
     private DifficultyState difficulty;
     private Circus circus;
@@ -225,8 +223,10 @@ public class Controller implements Observer {
         //TODO: UPDATE DIFFICULTY AFTER CERTAIN SCORE
     }
 
-    public void updateScore() {
-
+    @Override
+    public void incrementScore(int inc) {
+        score+=inc;
+        circus.setScore(score);
     }
 
     @Override
