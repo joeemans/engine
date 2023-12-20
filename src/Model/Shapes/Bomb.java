@@ -5,7 +5,7 @@ import Model.ImageObject;
 import Model.ShapeLoader;
 import Model.Type;
 
-public class Bomb extends ImageObject implements Faller{
+public class Bomb extends ImageObject implements Faller {
     private static final int FALLING_DECREMENT = 1;
 
     public Bomb(int x, int y, Type type) {

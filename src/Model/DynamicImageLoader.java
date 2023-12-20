@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class DynamicImageLoader implements ImageLoader{
+public class DynamicImageLoader implements ImageLoader {
 
     @Override
     public BufferedImage loadImage(String fileName) {

@@ -46,7 +46,6 @@ public class Controller implements Observer {
         this(circus);
         setDifficulty(difficulty);
         this.harderOverTime = false;
-        circus.getMovableObjects().add(new Plate(circus.getClown().getX(), 100, Type.BLUE_PLATE));
     }
 
     public void setDifficulty(DifficultyState difficulty) {

@@ -12,7 +12,7 @@ import java.util.Stack;
 import Controller.Subject;
 import Controller.Observer;
 
-public class Clown extends ImageObject implements PlateCatcher, Subject, ShapeLoader {
+public class Clown extends ImageObject implements PlateCatcher, Subject {
     private Stack <GameObject> leftTray = new Stack<>();
     private Stack <GameObject> rightTray = new Stack<>();
     private List<Observer> observers = new ArrayList<>();
@@ -29,7 +29,6 @@ public class Clown extends ImageObject implements PlateCatcher, Subject, ShapeLo
     public boolean catchPlate(Plate plate) {
         return catchPlateWithLeft(plate) || catchPlateWithRight(plate);
     }
-
 
     private boolean catchPlateWithLeft(Plate plate) {
 
@@ -95,8 +94,4 @@ public class Clown extends ImageObject implements PlateCatcher, Subject, ShapeLo
         }
     }
 
-    @Override
-    public ImageObject loadShape(int x, int y) {
-        return new Clown(x , y);
-    }
 }
