@@ -49,14 +49,13 @@ public class Circus implements World, Subject {
 
         constantObjects.add(new ImageObject(0, 0, Type.BACKGROUND));
 
-       // DynamicFileLinker.shapesLoader();
-       // clown = (Clown) DynamicFileLinker.getUserControlledShape();
-      //  clown.setY(screenHeight / 2 + 70);
-      //  clown.setX(screenWidth / 2 - 110);
+        DynamicFileLinker.shapesLoader();
+        ShapeLoader userControlledObjectFactory = DynamicFileLinker.getRandomUserControlledShapeFactory();
+        clown = (Clown) userControlledObjectFactory.loadShape(screenWidth / 2 - 110, screenHeight / 2 + 70);
 
      //   clown.loadShape(screenWidth / 2 - 110, screenHeight / 2 + 70);
 
-        clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70);
+    //    clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70);
 
         controllableObjects.add(clown);
 
