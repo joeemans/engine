@@ -33,6 +33,60 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
         return catchPlateWithLeft(plate) || catchPlateWithRight(plate);
     }
 
+    public boolean catchPlateWithLeft(Plate plate) {
+
+        if(Math.abs(this.getX() + plate.getWidth()/2 - plate.getX() - plate.getWidth()/2) <= plate.getWidth()/2
+                && (375 - (getLeftTraySize() * 10)) - plate.getY() <= 10
+                && plate.getY() < 375 - (getLeftTraySize() * 10)
+        ){
+
+            if(!checkConsecutivePlatesOnLeft(plate.getType().getColor())) {
+//            checkConsecutivePlatesOnLeft(plate.getType().getColor());
+                plate.setX(getX());
+                plate.setY(getY() - 20 - getLeftTraySize() * 10);
+                plate.setInLeftTray();
+                plate.setX(this.getX());
+                plate.setY(this.getY() - 30 - this.getLeftTraySize() * 10);
+                plate.setInLeftTray();
+                leftTray.add(plate);
+//            if(consecutivePlatesOnLeft == 3){
+//                removeConsecutivePlatesOnLeft();
+//            }
+            }
+            return true;
+        }
+        return false;
+
+    }
+
+    public boolean catchPlateWithRight(Plate plate) {
+
+        if(Math.abs(plate.getX() + plate.getWidth() - this.getX() - this.getWidth()) <= plate.getWidth()/2
+                && (375 - (getRightTraySize() * 10)) - plate.getY() <= 10
+                && plate.getY() < 375 - (getRightTraySize() * 10) ) {
+
+            System.out.println("CAUGHT WITH RIGHT!");
+
+            if(! checkConsecutivePlatesOnRight(((plate).getType().getColor()))) {
+//            checkConsecutivePlatesOnRight(((plate).getType().getColor()));
+                plate.setX(getX() + getWidth() / 2);
+                plate.setY(getY() - 10 - getRightTraySize() * 10);
+                plate.setInRightTray();
+
+                plate.setX((this.getX() + this.getWidth() / 2));
+                plate.setY(this.getY() - 10 - this.getRightTraySize() * 10);
+                plate.setInRightTray();
+                rightTray.add(plate);
+//            if ( consecutivePlatesOnRight == 3 ){
+//                removeConsecutivePlatesOnRight();
+//            }
+            }
+            return true;
+        }
+        return false;
+
+    }
+
     public boolean checkConsecutivePlatesOnRight(Color color) {
         /*if(!this.rightTray.isEmpty()) {
             if (((Plate) this.rightTray.get(getRightTraySize()-1)).getType().getColor().equals(color)) {
@@ -92,6 +146,19 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
             return true;
 
     }
+
+    public void updateLeftTray() {
+        for (Observer observer : observers) {
+            observer.leftTrayUpdate();
+        }
+    }
+
+    public void updateRightTray() {
+        for (Observer observer : observers) {
+            observer.rightTrayUpdate();
+        }
+    }
+
     public void removeConsecutivePlatesOnRight(){
         for(int i=1; i<=2; i++){
             updateRightTray();
@@ -102,61 +169,6 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
         for(int i=1; i<=2; i++){
             updateLeftTray();
         }
-    }
-
-
-    public boolean catchPlateWithLeft(Plate plate) {
-
-        if(Math.abs(this.getX() + plate.getWidth()/2 - plate.getX() - plate.getWidth()/2) <= plate.getWidth()/2
-                && (375 - (getLeftTraySize() * 10)) - plate.getY() <= 10
-                && plate.getY() < 375 - (getLeftTraySize() * 10)
-        ){
-
-            if(!checkConsecutivePlatesOnLeft(plate.getType().getColor())) {
-//            checkConsecutivePlatesOnLeft(plate.getType().getColor());
-            plate.setX(getX());
-            plate.setY(getY() - 20 - getLeftTraySize() * 10);
-            plate.setInLeftTray();
-            plate.setX(this.getX());
-            plate.setY(this.getY() - 30 - this.getLeftTraySize() * 10);
-            plate.setInLeftTray();
-            leftTray.add(plate);
-//            if(consecutivePlatesOnLeft == 3){
-//                removeConsecutivePlatesOnLeft();
-//            }
-            }
-            return true;
-        }
-        return false;
-
-    }
-
-    public boolean catchPlateWithRight(Plate plate) {
-
-        if(Math.abs(plate.getX() + plate.getWidth() - this.getX() - this.getWidth()) <= plate.getWidth()/2
-                && (375 - (getRightTraySize() * 10)) - plate.getY() <= 10
-                && plate.getY() < 375 - (getRightTraySize() * 10) ) {
-
-            System.out.println("CAUGHT WITH RIGHT!");
-
-            if(! checkConsecutivePlatesOnRight(((plate).getType().getColor()))) {
-//            checkConsecutivePlatesOnRight(((plate).getType().getColor()));
-            plate.setX(getX() + getWidth() / 2);
-            plate.setY(getY() - 10 - getRightTraySize() * 10);
-            plate.setInRightTray();
-
-            plate.setX((this.getX() + this.getWidth() / 2));
-            plate.setY(this.getY() - 10 - this.getRightTraySize() * 10);
-            plate.setInRightTray();
-            rightTray.add(plate);
-//            if ( consecutivePlatesOnRight == 3 ){
-//                removeConsecutivePlatesOnRight();
-//            }
-            }
-                return true;
-        }
-        return false;
-
     }
 
     @Override
@@ -186,15 +198,4 @@ public class Clown extends ImageObject implements PlateCatcher, Subject {
         }
     }
 
-    public void updateLeftTray() {
-        for (Observer observer : observers) {
-            observer.leftTrayUpdate();
-        }
-    }
-
-    public void updateRightTray() {
-        for (Observer observer : observers) {
-            observer.rightTrayUpdate();
-        }
-    }
 }
