@@ -89,7 +89,7 @@ public class Controller implements Observer {
                 controllableObjects.add(currentObject);
                 objectIterator.remove();
                 currentObject.setX(clown.getX());
-                currentObject.setY(clown.getY() - clown.getLeftTraySize()*10);
+                currentObject.setY(clown.getY() - 20 - clown.getLeftTraySize()*10);
                 assert currentObject instanceof Plate;
                 ((Plate) currentObject).setInLeftTray();
             }
@@ -99,7 +99,7 @@ public class Controller implements Observer {
                 controllableObjects.add(currentObject);
                 objectIterator.remove();
                 currentObject.setX(clown.getX() + clown.getWidth()/2);
-                currentObject.setY(clown.getY() - clown.getRightTraySize()*10);
+                currentObject.setY(clown.getY() -10 - clown.getRightTraySize()*10);
                 assert currentObject instanceof Plate;
                 ((Plate) currentObject). setInRightTray();
             }
