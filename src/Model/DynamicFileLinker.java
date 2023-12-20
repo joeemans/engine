@@ -9,9 +9,10 @@ public abstract class DynamicFileLinker {
     private static final String SHAPES_DESTINATION_PACKAGE = "Model.Shapes.Factories";
     private static final List <ShapeLoader> userControlledShapes = new ArrayList<>();
     private static final List <ShapeLoader> fallingObjects = new ArrayList<>();
+    private static final List <ShapeLoader> detonatingObjectShape = new ArrayList<>();
 
     public static void shapesLoader() {
-        File packageDirectory = new File("C:\\Users\\youss\\IdeaProjects\\engine1\\src\\Model\\Shapes\\Factories");
+        File packageDirectory = new File("src\\Model\\Shapes\\Factories");
         File[] files = packageDirectory.listFiles((dir, name) -> name.endsWith(".java"));
         System.out.println(packageDirectory);
 
@@ -24,8 +25,14 @@ public abstract class DynamicFileLinker {
                     Object objectLoader = classLoader.getDeclaredConstructor().newInstance();
 
                     if (objectLoader instanceof ShapeLoader && !((ShapeLoader)objectLoader).getControllable()){
-                        System.out.println(1);
-                        fallingObjects.add((ShapeLoader) objectLoader);
+                        Object sample = ((ShapeLoader) objectLoader).loadShape(0,0);
+                        if (sample instanceof Detonator){
+                            System.out.println(1);
+                            detonatingObjectShape.add((ShapeLoader) objectLoader);
+                        } else if (sample instanceof Faller) {
+                            System.out.println(3);
+                            fallingObjects.add((ShapeLoader) objectLoader);
+                        }
                     }
                     else if (objectLoader instanceof ShapeLoader && ((ShapeLoader)objectLoader).getControllable()){
                         System.out.println(2);
@@ -41,11 +48,19 @@ public abstract class DynamicFileLinker {
     public static ShapeLoader getRandomUserControlledShapeFactory(){
         int size = userControlledShapes.size() - 1;
         int randomizedIndex = (int) (Math.random() * size);
-        return userControlledShapes.get(randomizedIndex );
+        return userControlledShapes.get(randomizedIndex);
     }
-    public static ShapeLoader getRandomFallingShapeFactory(){
+
+    public static ShapeLoader getRandomFallingObjectFactory(){
         int size = fallingObjects.size() - 1;
         int randomizedIndex = (int) (Math.random() * size);
         return fallingObjects.get(randomizedIndex);
     }
+
+    public static ShapeLoader getRandomDetonatingObjectFactory(){
+        int size = detonatingObjectShape.size() - 1;
+        int randomizedIndex = (int) (Math.random() * size);
+        return detonatingObjectShape.get(randomizedIndex);
+    }
+
 }

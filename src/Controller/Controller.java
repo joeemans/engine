@@ -3,7 +3,6 @@ package Controller;
 
 import Model.*;
 import Model.Circus;
-import Model.Shapes.Bomb;
 import Model.Shapes.Clown;
 import Model.Shapes.Plate;
 import eg.edu.alexu.csd.oop.game.GameObject;
@@ -28,6 +27,7 @@ public class Controller implements Observer {
     private double bombRate;
     private long timeSinceLastPlate;
     private long timeSinceLastBomb;
+    private static final int DEFAULT_TIME_BETWEEN_EXPLOSIONS = 3000;
 
     private boolean harderOverTime = true;
 
@@ -76,8 +76,11 @@ public class Controller implements Observer {
                 ((Faller) currentObject).freeFall();
 
 
-//            if (currentObject instanceof Bomb) {
-//                Bomb bomb = (Bomb) currentObject;
+            if (currentObject instanceof Detonator && circus.intersect(currentObject,clown)) {
+                ((Detonator) currentObject).detonate();
+                constantObjects.add(currentObject);
+                objectIterator.remove();
+            }
 //
 //                if () { //Clown Catches Bomb
 //                   Explosion explosion = new Explosion(bomb.getX(), bomb.getY(), Type.EXPLOSION);
@@ -100,6 +103,15 @@ public class Controller implements Observer {
             if (currentObject.getY() >= getCircus().getHeight()){
                 objectIterator.remove();
                 System.out.println("Object removed");
+            }
+        }
+        objectIterator = constantObjects.iterator();
+        while (objectIterator.hasNext()){
+            GameObject currentObject = objectIterator.next();
+
+            if(currentObject instanceof Detonator && System.currentTimeMillis() >
+                    ((Detonator)currentObject).getDetonatingTime() + DEFAULT_TIME_BETWEEN_EXPLOSIONS){
+                objectIterator.remove();
             }
         }
         return true;
@@ -128,13 +140,14 @@ public class Controller implements Observer {
             if (i < platesToDrop) {
                 int randomX = (int) (Math.random() * getCircus().getWidth());
                 int randomY = (int) (Math.random() * getCircus().getHeight()) / 5;
-                int randomType = (int) (Math.random() * 3) + 1;
-                movableObjects.add(new Plate(randomX, randomY, Type.getByValue(randomType)));
+                ShapeLoader randomFallingObjectFactory = DynamicFileLinker.getRandomFallingObjectFactory();
+                movableObjects.add(randomFallingObjectFactory.loadShape(randomX, randomY));
             }
             if (i < bombsToDrop) {
                 int randomX = (int) (Math.random() * getCircus().getWidth());
                 int randomY = (int) (Math.random() * getCircus().getHeight()) / 5;
-                movableObjects.add(new Bomb(randomX, randomY, Type.BOMB));
+                ShapeLoader randomDetonatingObjectFactory = DynamicFileLinker.getRandomDetonatingObjectFactory();
+                movableObjects.add(randomDetonatingObjectFactory.loadShape(randomX, randomY));
             }
         }
     }

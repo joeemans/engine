@@ -23,7 +23,7 @@ public enum Type {
         return this.value;
     }
 
-    String getName(){
+    public String getName(){
         return this.name;
     }
 

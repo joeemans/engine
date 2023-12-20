@@ -52,11 +52,6 @@ public class Circus implements World, Subject {
         DynamicFileLinker.shapesLoader();
         ShapeLoader userControlledObjectFactory = DynamicFileLinker.getRandomUserControlledShapeFactory();
         clown = (Clown) userControlledObjectFactory.loadShape(screenWidth / 2 - 110, screenHeight / 2 + 70);
-
-     //   clown.loadShape(screenWidth / 2 - 110, screenHeight / 2 + 70);
-
-    //    clown = new Clown(screenWidth / 2 - 110, screenHeight / 2 + 70);
-
         controllableObjects.add(clown);
 
 //        platePool = new PlatePool(this);
@@ -81,9 +76,9 @@ public class Circus implements World, Subject {
         return true;
     }
 
-   /* private boolean intersect (GameObject o1, GameObject o2){
+    public boolean intersect(GameObject o1, GameObject o2){
         return (Math.abs((o1.getX() + o1.getWidth() / 2) - (o2.getX() + o2.getWidth() / 2)) <= o1.getWidth()) && (Math.abs((o1.getY() + o1.getHeight() / 2) - (o2.getY() + o2.getHeight() / 2)) <= o1.getHeight());
-    }*/
+    }
 
     @Override
     public List<GameObject> getConstantObjects () {
@@ -119,7 +114,7 @@ public class Circus implements World, Subject {
 
     @Override
     public int getControlSpeed () {
-        return 5;
+        return 7;
     }
 
     @Override
