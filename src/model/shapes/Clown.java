@@ -9,11 +9,10 @@ import java.util.List;
 import controller.Subject;
 import controller.Observer;
 
-public class Clown extends ImageObject implements UserControlled, Subject {
+public class Clown extends ImageObject implements Subject, UserControlled {
 
     public ArrayList<GameObject> leftTray = new ArrayList<>();
     public ArrayList<GameObject> rightTray = new ArrayList<>();
-
     private List<Observer> observers = new ArrayList<>();
     public boolean platesEmptied;
 
@@ -22,25 +21,23 @@ public class Clown extends ImageObject implements UserControlled, Subject {
         super(x, y, Type.CLOWN);
     }
 
-
     @Override
-    public boolean catchPlate(Plate plate) {
+    public boolean catchPlate(Faller plate) {
         return catchPlateWithLeft(plate) || catchPlateWithRight(plate);
     }
 
-    @Override
-    public boolean catchPlateWithLeft(Plate plate) {
+    public boolean catchPlateWithLeft(Faller plate) {
 
         if(Math.abs(this.getX() + plate.getWidth()/2 - plate.getX() - plate.getWidth()/2) <= plate.getWidth()/2
                 && (375 - (getLeftTraySize() * 10)) - plate.getY() <= 10
                 && plate.getY() < 375 - (getLeftTraySize() * 10)
         ){
 
-            if(!checkConsecutivePlatesOnLeft(plate.getType().getColor())) {
+            if(!checkConsecutivePlatesOnLeft(((Plate)plate).getType().getColor())) {
                 plate.setX(this.getX());
                 plate.setY(this.getY() - 40 - this.getLeftTraySize() * 10);
-                plate.setInLeftTray();
-                leftTray.add(plate);
+                ((Plate)plate).setInLeftTray();
+                leftTray.add((GameObject) plate);
                 notifyObserversOnCatchingPlates();
             }
             return true;
@@ -49,8 +46,7 @@ public class Clown extends ImageObject implements UserControlled, Subject {
 
     }
 
-    @Override
-    public boolean catchPlateWithRight(Plate plate) {
+    public boolean catchPlateWithRight(Faller plate) {
 
         if(Math.abs(plate.getX() + plate.getWidth() - this.getX() - this.getWidth()) <= plate.getWidth()/2
                 && (375 - (getRightTraySize() * 10)) - plate.getY() <= 10
@@ -58,11 +54,11 @@ public class Clown extends ImageObject implements UserControlled, Subject {
 
             System.out.println("CAUGHT WITH RIGHT!");
 
-            if(! checkConsecutivePlatesOnRight(((plate).getType().getColor()))) {
+            if(! checkConsecutivePlatesOnRight(((Plate)plate).getType().getColor())) {
                 plate.setX((this.getX() + this.getWidth() / 2));
                 plate.setY(this.getY() - 10 - this.getRightTraySize() * 10);
-                plate.setInRightTray();
-                rightTray.add(plate);
+                ((Plate)plate).setInRightTray();
+                rightTray.add((GameObject) plate);
                 notifyObserversOnCatchingPlates();
             }
             return true;
@@ -70,6 +66,7 @@ public class Clown extends ImageObject implements UserControlled, Subject {
         return false;
 
     }
+
 
     public boolean checkConsecutivePlatesOnRight(Color color) {
         if(this.rightTray.size() < 2){
@@ -86,6 +83,7 @@ public class Clown extends ImageObject implements UserControlled, Subject {
             platesEmptied = true;
             return true;
     }
+
 
     public boolean checkConsecutivePlatesOnLeft(Color color){
         if(this.leftTray.size() < 2){
@@ -145,12 +143,11 @@ public class Clown extends ImageObject implements UserControlled, Subject {
         return catchBombWithLeft(bomb) || catchBombWithRight(bomb);
     }
 
-    @Override
     public boolean catchBombWithLeft(Detonator bomb) {
-        if(Math.abs(this.getX() + ((GameObject)bomb).getWidth()/2 - ((GameObject)bomb).getX()
-                - ((GameObject)bomb).getWidth()/2) <= ((GameObject)bomb).getWidth()/2
-                && (375 - (getLeftTraySize() * 10)) - ((GameObject)bomb).getY() <= 10
-                && ((GameObject)bomb).getY() < 375 - (getLeftTraySize() * 10)
+        if(Math.abs(this.getX() + bomb.getWidth()/2 - bomb.getX()
+                - bomb.getWidth()/2) <= bomb.getWidth()/2
+                && (375 - (getLeftTraySize() * 10)) - bomb.getY() <= 10
+                && bomb.getY() < 375 - (getLeftTraySize() * 10)
         ){
             bomb.detonate();
             removeAllPlatesOnLeft();
@@ -162,12 +159,11 @@ public class Clown extends ImageObject implements UserControlled, Subject {
 
     }
 
-    @Override
     public boolean catchBombWithRight(Detonator bomb) {
-        if(Math.abs(((GameObject)bomb).getX() + ((GameObject)bomb).getWidth() -
-                this.getX() - this.getWidth()) <= ((GameObject)bomb).getWidth()/2
-                && (375 - (getRightTraySize() * 10)) - ((GameObject)bomb).getY() <= 10
-                && ((GameObject)bomb).getY() < 375 - (getRightTraySize() * 10) ){
+        if(Math.abs(bomb.getX() + bomb.getWidth() -
+                this.getX() - this.getWidth()) <= bomb.getWidth()/2
+                && (375 - (getRightTraySize() * 10)) - bomb.getY() <= 10
+                && bomb.getY() < 375 - (getRightTraySize() * 10) ){
 
             bomb.detonate();
             notifyObserversOnCatchingBomb();
@@ -179,7 +175,7 @@ public class Clown extends ImageObject implements UserControlled, Subject {
 
     }
 
-    private void removeAllPlatesOnLeft(){
+    public void removeAllPlatesOnLeft(){
         while(!leftTray.isEmpty()){
             updateLeftTray();
         }
@@ -191,6 +187,7 @@ public class Clown extends ImageObject implements UserControlled, Subject {
         }
     }
 
+    @Override
     public void addObserver(Observer observer) {
         observers.add(observer);
     }
@@ -225,4 +222,5 @@ public class Clown extends ImageObject implements UserControlled, Subject {
             observer.incrementScore(-10);
         }
     }
+
 }

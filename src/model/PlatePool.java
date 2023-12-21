@@ -7,7 +7,7 @@ import java.util.Stack;
 class PlatePool {
 
     private static final int POOL_SIZE = 5;
-    private final Stack<Plate> plates = new Stack<>();
+    private final Stack<Faller> plates = new Stack<>();
     Circus circus;
 
     PlatePool(Circus circus){
@@ -26,14 +26,14 @@ class PlatePool {
 
     }
 
-    Plate borrowPlate(int x, int y, int type){
+    Faller borrowPlate(int x, int y, int type){
 
         int randomX = (int) (Math.random() * circus.getWidth());
         int randomY = (int) (Math.random() * circus.getHeight()) / 5;
         int randomType = (int) (Math.random() * 4) + 1;
 
         if(!plates.isEmpty()){
-            Plate plate = plates.pop();
+            Faller plate = plates.pop();
             plate.setX(randomX);
             plate.setY(randomY);
             return plate;
@@ -44,7 +44,7 @@ class PlatePool {
 
     }
 
-    void returnPlate(Plate plate){
+    void returnPlate(Faller plate){
         plates.push(plate);
     }
 

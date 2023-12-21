@@ -5,8 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="Detonator and User Controlled Interfaces reworked, lives system introduced and fully functional.&#10;Time out system functional as well, game is almost set to go.">
+      <change afterPath="$PROJECT_DIR$/src/model/BombCatcher.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/PlateCatcher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_1_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_1_20_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_2_59_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_2_59_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_01_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_01_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_36_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_36_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_7_30_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_7_30_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_8_33_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_8_33_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Circus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Detonator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Detonator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Faller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Faller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/PlatePool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PlatePool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/UserControlled.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UserControlled.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/shapes/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/shapes/Clown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/Clown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/shapes/Plate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/Plate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
