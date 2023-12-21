@@ -1,7 +1,6 @@
-import Controller.Controller;
-import Model.Circus;
-import Controller.HardDifficulty;
-import Controller.EasyDifficulty;
+import controller.Controller;
+import model.Circus;
+import controller.HardDifficulty;
 
 import eg.edu.alexu.csd.oop.game.GameEngine;
 import eg.edu.alexu.csd.oop.game.GameEngine.*;

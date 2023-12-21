@@ -4,13 +4,45 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="added bombing plates">
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="Game almost functional&#10;Added detonation aspect, yet to be improved">
+      <change afterPath="$PROJECT_DIR$/src/resources/empty-heart.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/heart.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Observer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Subject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Circus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Clown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Shapes/Clown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DifficultyState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DifficultyState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DynamicImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/DynamicImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EasyDifficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/EasyDifficulty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HardDifficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/HardDifficulty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/MediumDifficulty.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MediumDifficulty.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Subject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Subject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/BombCatcher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Circus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Color.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Color.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Detonator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Detonator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/DynamicFileLinker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DynamicFileLinker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/DynamicImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DynamicImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Explosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Explosion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Faller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Faller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ImageLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ImageObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ImageObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/PlateCatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/UserControlled.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/PlatePool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PlatePool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ShapeLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ShapeLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/Bomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Clown.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/Clown.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Factories/BluePlateFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/factories/BluePlateFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Factories/BombFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/factories/BombFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Factories/ClownFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/factories/ClownFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Factories/GreenPlateFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/factories/GreenPlateFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Factories/RedPlateFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/factories/RedPlateFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Factories/WhitePlateFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/factories/WhitePlateFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Factories/YellowPlateFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/factories/YellowPlateFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Shapes/Plate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/Plate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,35 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703088789229</updated>
     </task>
-    <task id="LOCAL-00012" summary="fixed positions (again)">
-      <created>1703104677305</created>
+    <task id="LOCAL-00012" summary="Game almost functional&#10;Added detonation aspect, yet to be improved">
+      <option name="closed" value="true" />
+      <created>1703093737795</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1703104677305</updated>
+      <updated>1703093737795</updated>
     </task>
-    <task id="LOCAL-00013" summary="changed stack to array list">
-      <created>1703106587358</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1703106587358</updated>
-    </task>
-    <task id="LOCAL-00014" summary=".">
-      <created>1703106904641</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1703106904641</updated>
-    </task>
-    <task id="LOCAL-00015" summary="added bombing plates">
-      <created>1703110304959</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1703110304959</updated>
-    </task>
-    <option name="localTasksCounter" value="16" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,10 +260,7 @@
     <MESSAGE value="modified plates sizes" />
     <MESSAGE value="First introduction of DynamicFileLinker&#10;Will need more work to be actually functional" />
     <MESSAGE value="Added Factory DP&#10;Now DynamicFileLinker is functional, but need to update our program to match its usage" />
-    <MESSAGE value="fixed positions (again)" />
-    <MESSAGE value="changed stack to array list" />
-    <MESSAGE value="." />
-    <MESSAGE value="added bombing plates" />
-    <option name="LAST_COMMIT_MESSAGE" value="added bombing plates" />
+    <MESSAGE value="Game almost functional&#10;Added detonation aspect, yet to be improved" />
+    <option name="LAST_COMMIT_MESSAGE" value="Game almost functional&#10;Added detonation aspect, yet to be improved" />
   </component>
 </project>
