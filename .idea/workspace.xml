@@ -4,9 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="Detonator and User Controlled Interfaces reworked, lives system introduced and fully functional.&#10;Time out system functional as well, game is almost set to go.">
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="Added Factory DP&#10;Now DynamicFileLinker is functional, but need to update our program to match its usage">
+      <change afterPath="$PROJECT_DIR$/src/view/MainWindow.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_1_20_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_1_20_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_2_59_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_2_59_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_01_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_01_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_36_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_4_36_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_7_30_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_7_30_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_8_33_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_15_2023_8_33_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Circus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameWindow.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +48,7 @@
 }</component>
   <component name="ProjectId" id="2ZSu9URp7vZBI0OiqcZmVQXNpbo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -189,23 +199,7 @@
       <option name="project" value="LOCAL" />
       <updated>1703088789229</updated>
     </task>
-    <task id="LOCAL-00012" summary="Game almost functional&#10;Added detonation aspect, yet to be improved">
-      <option name="closed" value="true" />
-      <created>1703093737795</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1703093737795</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Detonator and User Controlled Interfaces reworked, lives system introduced and fully functional.&#10;Time out system functional as well, game is almost set to go.">
-      <option name="closed" value="true" />
-      <created>1703160784759</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1703160784759</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,12 +222,11 @@
     <MESSAGE value="added enums for Type and Color of Components" />
     <MESSAGE value="added class for Dynamic Image Loader" />
     <MESSAGE value="-" />
+    <MESSAGE value="." />
     <MESSAGE value=".." />
     <MESSAGE value="modified plates sizes" />
     <MESSAGE value="First introduction of DynamicFileLinker&#10;Will need more work to be actually functional" />
     <MESSAGE value="Added Factory DP&#10;Now DynamicFileLinker is functional, but need to update our program to match its usage" />
-    <MESSAGE value="Game almost functional&#10;Added detonation aspect, yet to be improved" />
-    <MESSAGE value="Detonator and User Controlled Interfaces reworked, lives system introduced and fully functional.&#10;Time out system functional as well, game is almost set to go." />
-    <option name="LAST_COMMIT_MESSAGE" value="Detonator and User Controlled Interfaces reworked, lives system introduced and fully functional.&#10;Time out system functional as well, game is almost set to go." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Factory DP&#10;Now DynamicFileLinker is functional, but need to update our program to match its usage" />
   </component>
 </project>

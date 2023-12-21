@@ -4,9 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 
 final public class GameWindow extends JFrame {
-    private static final Dimension WINDOW_DIMENSION = new Dimension(900, 700);
+    public static final Dimension WINDOW_DIMENSION = new Dimension(900, 700);
 
     public GameWindow() {
+
         setSize(WINDOW_DIMENSION);
         setTitle("Clown Game");
         setResizable(false);
