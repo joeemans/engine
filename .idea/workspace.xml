@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="Detonator and User Controlled Interfaces reworked, lives system introduced and fully functional.&#10;Time out system functional as well, game is almost set to go.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Circus.java" afterDir="false" />
-    </list>
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="Main menu done but still the options are not complete" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +36,7 @@
 }</component>
   <component name="ProjectId" id="2ZSu9URp7vZBI0OiqcZmVQXNpbo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
