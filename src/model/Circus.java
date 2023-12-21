@@ -32,7 +32,7 @@ public class Circus implements World, Subject {
 
 //    PlatePool platePool;
 
-    private Clown clown;
+    private UserControlled clown;
     long score = 0;
 
     private ArrayList<Observer> observers = new ArrayList<>();
@@ -60,7 +60,7 @@ public class Circus implements World, Subject {
 
         DynamicFileLinker.shapesLoader();
         ShapeLoader userControlledObjectFactory = DynamicFileLinker.getRandomUserControlledShapeFactory();
-        clown = (Clown) userControlledObjectFactory.loadShape(screenWidth / 2 - 110, screenHeight / 2 + 70);
+        clown = (UserControlled) userControlledObjectFactory.loadShape(screenWidth / 2 - 110, screenHeight / 2 + 70);
         controllableObjects.add(clown);
 
 //        platePool = new PlatePool(this);
@@ -70,8 +70,8 @@ public class Circus implements World, Subject {
         instance = null;
     }
 
-    public Clown getClown() {
-        return clown;
+    public UserControlled getClown() {
+        return (Clown) clown;
     }
 
     @Override
@@ -183,4 +183,5 @@ public class Circus implements World, Subject {
     public void notifyObserversOnCatchingBomb() {
         //
     }
+
 }

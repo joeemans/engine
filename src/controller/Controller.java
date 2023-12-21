@@ -57,7 +57,7 @@ public class Controller implements Observer {
         List<GameObject> movableObjects = getCircus().getMovableObjects();
         List<GameObject> controllableObjects = getCircus().getControlableObjects();
         List<GameObject> constantObjects = getCircus().getConstantObjects();
-        Clown clown = getCircus().getClown();
+        UserControlled clown = getCircus().getClown();
 
         updateDifficulty();
         dropObjects();
@@ -66,14 +66,11 @@ public class Controller implements Observer {
             while (objectIterator.hasNext()) {
                 GameObject currentObject = objectIterator.next();
 
-                if (currentObject instanceof Plate) {
-                    ((Plate) currentObject).setClownWidth(clown.getWidth());
-                    ((Plate) currentObject).setScreenWidth(circus.getWidth());
-                }
-
-                if (currentObject instanceof Faller)
+                if (currentObject instanceof Faller){
+                    ((Faller) currentObject).setClownWidth(clown.getWidth());
+                    ((Faller) currentObject).setScreenWidth(circus.getWidth());
                     ((Faller) currentObject).freeFall();
-
+                }
 
                 if (currentObject instanceof Detonator) {
                     if (clown.catchBomb((Detonator) currentObject)) {
@@ -89,16 +86,16 @@ public class Controller implements Observer {
                     }
                 }
 
-                if (currentObject instanceof Plate) {
-                    Plate plate = (Plate) currentObject;
+                else {
+                    Faller plate = (Faller)currentObject;
 
                     if (clown.catchPlate(plate)) {
-                        if (!circus.getClown().platesEmptied) {
+                        if (!((Clown)circus.getClown()).platesEmptied) {
                             controllableObjects.add(currentObject);
                         }
-                        circus.getClown().platesEmptied = false;
+                        ((Clown)circus.getClown()).platesEmptied = false;
                         objectIterator.remove();
-
+                        System.out.println(((Clown)circus.getClown()).getLeftTraySize());
                     }
                 }
 
@@ -167,15 +164,16 @@ public class Controller implements Observer {
 
     @Override
     public void leftTrayUpdate() {
-        Plate plate = (Plate) circus.getClown().leftTray.remove(circus.getClown().getLeftTraySize()-1);
+        Faller plate = (Faller) ((Clown)circus.getClown()).leftTray.remove(((Clown)circus.getClown()).getLeftTraySize()-1);
         circus.getControlableObjects().remove(plate);
     }
 
     @Override
     public void rightTrayUpdate() {
-        Plate plate = (Plate) circus.getClown().rightTray.remove(circus.getClown().getRightTraySize()-1);
+        Faller plate = (Faller) ((Clown)circus.getClown()).rightTray.remove(((Clown)circus.getClown()).getRightTraySize()-1);
         circus.getControlableObjects().remove(plate);
     }
+
 
     public Circus getCircus() {
         return circus;

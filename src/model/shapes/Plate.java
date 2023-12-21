@@ -50,10 +50,12 @@ public class Plate extends ImageObject implements Faller {
         this.inLeftTray = true;
     }
 
+    @Override
     public void setClownWidth(int clownWidth){
         this.clownWidth = clownWidth;
     }
 
+    @Override
     public void setScreenWidth(int screenWidth){
         this.screenWidth = screenWidth;
     }

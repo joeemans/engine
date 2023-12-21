@@ -1,13 +1,17 @@
 package model;
 
+import controller.Observer;
+import controller.Subject;
+import eg.edu.alexu.csd.oop.game.GameObject;
 import model.shapes.Plate;
 
-public interface UserControlled {
-    boolean catchPlate(Plate plate);
-    boolean catchPlateWithLeft(Plate plate);
-    boolean catchPlateWithRight(Plate plate);
+import java.util.ArrayList;
+import java.util.List;
+
+public interface UserControlled extends GameObject, Subject {
+
+    boolean catchPlate(Faller plate);
     boolean catchBomb(Detonator detonator);
-    boolean catchBombWithLeft(Detonator detonator);
-    boolean catchBombWithRight(Detonator detonator);
+
 
 }
