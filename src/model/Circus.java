@@ -1,9 +1,11 @@
 package model;
 
+import controller.DynamicImageLoader;
 import model.shapes.Clown;
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -96,7 +98,9 @@ public class Circus implements World, Subject {
     }
 
     public void decrementLives(){
-        constantObjects.remove(lives);
+        BufferedImage[] images = constantObjects.get(lives).getSpriteImages();
+        controller.DynamicImageLoader imageLoader = new DynamicImageLoader();
+        images[0] = imageLoader.loadImage("resources/" + Type.EMPTY_HEART.getName() + ".png");
         lives--;
     }
 

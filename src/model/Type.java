@@ -11,7 +11,7 @@ public enum Type {
     BOMB(6, "bomb"),
     EXPLOSION(7, "explosion"),
     HEART(8,"heart"),
-    EMPTY_HEART(9,"empty_heart");
+    EMPTY_HEART(9,"empty-heart");
 
     private final int value;
     private final String name;
