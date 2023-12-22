@@ -11,7 +11,8 @@ public enum Type {
     BACKGROUND(6, "background"),
     EXPLOSION(7, "explosion"),
     HEART(8,"heart"),
-    EMPTY_HEART(9,"empty-heart");
+    EMPTY_HEART(9,"empty-heart"),
+    ROCKET(10,"rocket");
 
     private final int value;
     private final String name;

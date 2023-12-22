@@ -6,7 +6,7 @@ import model.*;
 import java.awt.image.BufferedImage;
 
 public class Bomb extends ImageObject implements Detonator {
-    private static final int FALLING_DECREMENT = 1;
+    protected static final int FALLING_DECREMENT = 1;
     private long detonatingTime;
     int clownWidth;
     int screenWidth;
@@ -31,10 +31,10 @@ public class Bomb extends ImageObject implements Detonator {
         this.screenWidth = screenWidth;
     }
 
-    @Override
-    public void setY(int y) {
-        super.setY(y);
-    }
+//    @Override
+//    public void setY(int y) {
+//        super.setY(y);
+//    }
 
     @Override
     public void detonate() {

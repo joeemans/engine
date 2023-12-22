@@ -41,19 +41,19 @@ public abstract class DynamicFileLinker {
     }
 
     public static ShapeLoader getRandomUserControlledShapeFactory(){
-        int size = userControlledShapes.size() - 1;
+        int size = userControlledShapes.size();
         int randomizedIndex = (int) (Math.random() * size);
         return userControlledShapes.get(randomizedIndex);
     }
 
     public static ShapeLoader getRandomFallingObjectFactory(){
-        int size = fallingObjects.size() - 1;
+        int size = fallingObjects.size();
         int randomizedIndex = (int) (Math.random() * size);
         return fallingObjects.get(randomizedIndex);
     }
 
     public static ShapeLoader getRandomDetonatingObjectFactory(){
-        int size = detonatingObjectShape.size() - 1;
+        int size = detonatingObjectShape.size();
         int randomizedIndex = (int) (Math.random() * size);
         return detonatingObjectShape.get(randomizedIndex);
     }

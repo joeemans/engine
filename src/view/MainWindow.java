@@ -26,7 +26,7 @@ public class MainWindow extends JFrame {
         setSize(WINDOW_DIMENSION);
         setTitle("Main Menu");
         setResizable(false);
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setIconImage(new ImageIcon("GameWindowImage.jpg").getImage());
         ImageIcon imageIcon = new ImageIcon("Main-menu.jpg");

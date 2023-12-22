@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="GUI">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="Time pause issue fixed">
+      <change afterPath="$PROJECT_DIR$/src/model/ShakingObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/shapes/Rocket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/model/shapes/factories/RocketFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/rocket.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Circus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Circus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/DynamicFileLinker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DynamicFileLinker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/shapes/Bomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/shapes/Bomb.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/MainWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/MainWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/OptionsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/OptionsMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +224,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703245295590</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Time pause issue fixed">
+      <option name="closed" value="true" />
+      <created>1703248564907</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1703248564907</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -249,6 +263,7 @@
     <MESSAGE value="Detonator and User Controlled Interfaces reworked, lives system introduced and fully functional.&#10;Time out system functional as well, game is almost set to go." />
     <MESSAGE value="Gui ready" />
     <MESSAGE value="GUI" />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI" />
+    <MESSAGE value="Time pause issue fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Time pause issue fixed" />
   </component>
 </project>

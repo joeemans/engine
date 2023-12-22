@@ -73,7 +73,6 @@ public class OptionsMenu extends JFrame {
             String selectedDifficulty = (String) difficultyComboBox.getSelectedItem();
             int sensitivityValue = sensitivitySlider.getValue();
             System.out.println(selectedDifficulty);
-           // mainMenu.setDifficultyState(selectedDifficulty);
             mainMenu.setSensitivity(sensitivityValue);
 
             switch (selectedDifficulty){
@@ -95,6 +94,8 @@ public class OptionsMenu extends JFrame {
                 }
                 default: break;
             }
+            mainMenu.setVisible(true);
+            dispose();
         });
 
         add(difficultyLabel);

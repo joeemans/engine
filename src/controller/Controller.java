@@ -73,6 +73,8 @@ public class Controller implements Observer {
                 ((Faller) currentObject).setClownWidth(clown.getWidth());
                 ((Faller) currentObject).setScreenWidth(circus.getWidth());
                 ((Faller) currentObject).freeFall();
+                if(currentObject instanceof ShakingObject)
+                    ((ShakingObject) currentObject).shake();
             }
 
             if (currentObject instanceof Detonator) {
