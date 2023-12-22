@@ -22,7 +22,6 @@ public class FallingObjectPool {
             ShapeLoader randomFallingObjectFactory = DynamicFileLinker.getRandomFallingObjectFactory();
             circus.getMovableObjects().add(randomFallingObjectFactory.loadShape(randomX, randomY));
         }
-
     }
 
     public Faller borrowFallingObject(){

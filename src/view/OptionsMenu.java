@@ -37,7 +37,7 @@ public class OptionsMenu extends JFrame {
         sensitivityLabel.setFont(font);
         sensitivityLabel.setBounds(50, 200, 100, 50);
 
-        sensitivitySlider = new JSlider(1, 10);
+        sensitivitySlider = new JSlider(1, 14);
         sensitivitySlider.setBounds(200, 200, 150, 50);
 
         JButton mainMenuButton = new JButton("Main Menu");
@@ -70,6 +70,8 @@ public class OptionsMenu extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 mainMenu.setDifficultyState(new EasyDifficulty());
                 mainMenu.setSensitivity(7);
+                sensitivitySlider.setValue(7);
+                difficultyComboBox.setSelectedIndex(0);
             }
         });
 
@@ -100,6 +102,8 @@ public class OptionsMenu extends JFrame {
 //                    }
                     default: break;
                 }
+                mainMenu.setVisible(true);
+                dispose();
             }
         });
 

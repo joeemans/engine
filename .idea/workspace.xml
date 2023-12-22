@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="refactored">
-      <change afterPath="$PROJECT_DIR$/src/model/FallingObjectPool.java" afterDir="false" />
+    <list default="true" id="1cee9343-615d-44dd-82c9-04e06511d0d8" name="Changes" comment="Gui ready">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PlatePool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PlatePool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Type.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Type.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/FallingObjectPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/FallingObjectPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/OptionsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/OptionsMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +41,7 @@
 }</component>
   <component name="ProjectId" id="2ZSu9URp7vZBI0OiqcZmVQXNpbo" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -238,6 +237,7 @@
     <MESSAGE value="Added Factory DP&#10;Now DynamicFileLinker is functional, but need to update our program to match its usage" />
     <MESSAGE value="Game almost functional&#10;Added detonation aspect, yet to be improved" />
     <MESSAGE value="Detonator and User Controlled Interfaces reworked, lives system introduced and fully functional.&#10;Time out system functional as well, game is almost set to go." />
-    <option name="LAST_COMMIT_MESSAGE" value="Detonator and User Controlled Interfaces reworked, lives system introduced and fully functional.&#10;Time out system functional as well, game is almost set to go." />
+    <MESSAGE value="Gui ready" />
+    <option name="LAST_COMMIT_MESSAGE" value="Gui ready" />
   </component>
 </project>
