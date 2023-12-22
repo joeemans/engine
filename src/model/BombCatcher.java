@@ -1,6 +1,6 @@
 package model;
 
-public interface BombCatcher extends UserControlled {
+public interface BombCatcher extends PlateCatcher {
 
     boolean catchBomb(Detonator detonator);
     boolean catchBombWithLeft(Detonator detonator);

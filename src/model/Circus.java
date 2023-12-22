@@ -11,6 +11,7 @@ import java.util.List;
 
 import controller.Subject;
 import controller.Observer;
+import model.shapes.Plate;
 import view.MainWindow;
 
 public class Circus implements World, Subject {
@@ -62,6 +63,8 @@ public class Circus implements World, Subject {
         ShapeLoader userControlledObjectFactory = DynamicFileLinker.getRandomUserControlledShapeFactory();
         clown = (UserControlled) userControlledObjectFactory.loadShape(screenWidth / 2 - 110, screenHeight / 2 + 70);
         controllableObjects.add(clown);
+        Plate.setClownWidth(clown.getWidth());
+        Plate.setScreenWidth(getWidth());
     }
 
     public static void disposeInstance() {
@@ -165,27 +168,12 @@ public class Circus implements World, Subject {
         observers.remove(observer);
     }
 
-    @Override
     public void notifyObservers() {
         for (Observer observer : observers) {
             observer.refresh();
         }
     }
 
-    @Override
-    public void notifyObserversOnCatchingPlates() {
-        //
-    }
-
-    @Override
-    public void notifyObserversOnCatchingConsecutivePlates() {
-        //
-    }
-
-    @Override
-    public void notifyObserversOnCatchingBomb() {
-        //
-    }
 
     public int getSensitivity() {
         return sensitivity;

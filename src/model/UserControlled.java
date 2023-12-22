@@ -9,9 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface UserControlled extends GameObject, Subject {
-
     boolean catchPlate(Faller plate);
     boolean catchBomb(Detonator detonator);
-
-
 }

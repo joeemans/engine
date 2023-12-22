@@ -8,8 +8,8 @@ public class Plate extends ImageObject implements Faller {
     private static final int FALLING_DECREMENT = 1;
     private boolean inRightTray;
     private boolean inLeftTray;
-    private int clownWidth;
-    private int screenWidth;
+    private static int clownWidth;
+    private static int screenWidth;
 
     public Plate(int x, int y, Type type) {
         super(x, y, type);
@@ -50,14 +50,13 @@ public class Plate extends ImageObject implements Faller {
         this.inLeftTray = true;
     }
 
-    @Override
-    public void setClownWidth(int clownWidth){
-        this.clownWidth = clownWidth;
+
+    public static void setClownWidth(int clownWidth){
+        Plate.clownWidth = clownWidth;
     }
 
-    @Override
-    public void setScreenWidth(int screenWidth){
-        this.screenWidth = screenWidth;
+    public static void setScreenWidth(int screenWidth){
+        Plate.screenWidth = screenWidth;
     }
 
 }

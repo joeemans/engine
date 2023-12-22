@@ -21,17 +21,7 @@ public class Bomb extends ImageObject implements Detonator {
             setY( getY() + FALLING_DECREMENT);
     }
 
-    @Override
-    public void setClownWidth(int clownWidth) {
-        this.clownWidth = clownWidth;
-    }
-
-    @Override
-    public void setScreenWidth(int screenWidth) {
-        this.screenWidth = screenWidth;
-    }
-
-//    @Override
+    //    @Override
 //    public void setY(int y) {
 //        super.setY(y);
 //    }

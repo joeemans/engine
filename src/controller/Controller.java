@@ -70,8 +70,6 @@ public class Controller implements Observer {
             GameObject currentObject = objectIterator.next();
 
             if (currentObject instanceof Faller){
-                ((Faller) currentObject).setClownWidth(clown.getWidth());
-                ((Faller) currentObject).setScreenWidth(circus.getWidth());
                 ((Faller) currentObject).freeFall();
                 if(currentObject instanceof ShakingObject)
                     ((ShakingObject) currentObject).shake();
@@ -86,6 +84,7 @@ public class Controller implements Observer {
                 } else if (circus.intersect(currentObject, clown)) {
                     ((Detonator) currentObject).detonate();
                     constantObjects.add(currentObject);
+                    incrementScore(-10);
                     objectIterator.remove();
                     circus.decrementLives();
                 }
@@ -95,10 +94,10 @@ public class Controller implements Observer {
                 Faller plate = (Faller)currentObject;
 
                 if (clown.catchPlate(plate)) {
-                    if (!((Clown)circus.getClown()).platesEmptied) {
+                    if (!((Clown) circus.getClown()).isPlatesEmptied()) {
                         controllableObjects.add(currentObject);
                     }
-                    ((Clown)circus.getClown()).platesEmptied = false;
+                    ((Clown) circus.getClown()).setPlatesEmptied(false);
                     objectIterator.remove();
                 }
             }
@@ -167,7 +166,7 @@ public class Controller implements Observer {
 
     @Override
     public void incrementScore(int inc) {
-        score+=inc;
+        score += inc;
         circus.setScore(score);
     }
 

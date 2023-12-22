@@ -9,12 +9,12 @@ import java.util.List;
 import controller.Subject;
 import controller.Observer;
 
-public class Clown extends ImageObject implements Subject, UserControlled {
+public class Clown extends ImageObject implements BombCatcher {
 
     public ArrayList<GameObject> leftTray = new ArrayList<>();
     public ArrayList<GameObject> rightTray = new ArrayList<>();
     private final List<Observer> observers = new ArrayList<>();
-    public boolean platesEmptied;
+    private boolean platesEmptied;
 
 
     public Clown(int x, int y) {
@@ -78,7 +78,7 @@ public class Clown extends ImageObject implements Subject, UserControlled {
         }
             notifyObserversOnCatchingConsecutivePlates();
             removeConsecutivePlatesOnRight();
-            platesEmptied = true;
+            setPlatesEmptied(true);
             return true;
     }
 
@@ -95,7 +95,7 @@ public class Clown extends ImageObject implements Subject, UserControlled {
         }
             notifyObserversOnCatchingConsecutivePlates();
             removeConsecutivePlatesOnLeft();
-            platesEmptied = true;
+            setPlatesEmptied(true);
             return true;
     }
 
@@ -195,30 +195,30 @@ public class Clown extends ImageObject implements Subject, UserControlled {
         observers.remove(observer);
     }
 
-    @Override
-    public void notifyObservers() {
-        //
-    }
 
-    @Override
     public void notifyObserversOnCatchingPlates() {
         for (Observer observer : observers) {
             observer.incrementScore(1);
         }
     }
 
-    @Override
     public void notifyObserversOnCatchingConsecutivePlates() {
         for (Observer observer : observers) {
             observer.incrementScore(10);
         }
     }
 
-    @Override
     public void notifyObserversOnCatchingBomb() {
         for (Observer observer : observers) {
             observer.incrementScore(-10);
         }
     }
 
+    public boolean isPlatesEmptied() {
+        return platesEmptied;
+    }
+
+    public void setPlatesEmptied(boolean platesEmptied) {
+        this.platesEmptied = platesEmptied;
+    }
 }
