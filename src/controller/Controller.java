@@ -4,7 +4,6 @@ package controller;
 import model.*;
 import model.Circus;
 import model.shapes.Clown;
-import model.shapes.Plate;
 import eg.edu.alexu.csd.oop.game.GameObject;
 
 import java.util.Iterator;
@@ -28,6 +27,8 @@ public class Controller implements Observer {
 
     private boolean harderOverTime;
 
+    private FallingObjectPool fallingObjectPool;
+
     public Controller(Circus circus) {
         this.circus = circus;
         circus.addObserver(this);
@@ -38,6 +39,8 @@ public class Controller implements Observer {
         this.timeSinceLastBomb = System.currentTimeMillis();
 
         setDifficulty(new EasyDifficulty());
+
+        this.fallingObjectPool = new FallingObjectPool(circus);
 
     }
 
@@ -105,6 +108,12 @@ public class Controller implements Observer {
 
                 if (currentObject.getY() >= getCircus().getHeight()) {
                     objectIterator.remove();
+                    if (currentObject instanceof Detonator) {
+                        fallingObjectPool.returnDetonator((Detonator)currentObject);
+                    }
+                    else{
+                        fallingObjectPool.returnFallingObject((Faller)currentObject);
+                    }
                 }
             }
             objectIterator = constantObjects.iterator();
@@ -139,16 +148,25 @@ public class Controller implements Observer {
 
         for (int i = 0; i < Math.max(platesToDrop, bombsToDrop); i++) {
             if (i < platesToDrop) {
-                int randomX = (int) (Math.random() * getCircus().getWidth());
+                /*int randomX = (int) (Math.random() * getCircus().getWidth());
                 int randomY = (int) (Math.random() * getCircus().getHeight()) / 5;
                 ShapeLoader randomFallingObjectFactory = DynamicFileLinker.getRandomFallingObjectFactory();
-                movableObjects.add(randomFallingObjectFactory.loadShape(randomX, randomY));
+                movableObjects.add(randomFallingObjectFactory.loadShape(randomX, randomY));*/
+
+                //Faller plate = platePool.borrowPlate();
+                //movableObjects.add(plate);
+
+                Faller fallingObject = fallingObjectPool.borrowFallingObject();
+
             }
             if (i < bombsToDrop) {
-                int randomX = (int) (Math.random() * getCircus().getWidth());
+                /*int randomX = (int) (Math.random() * getCircus().getWidth());
                 int randomY = (int) (Math.random() * getCircus().getHeight()) / 5;
                 ShapeLoader randomDetonatingObjectFactory = DynamicFileLinker.getRandomDetonatingObjectFactory();
-                movableObjects.add(randomDetonatingObjectFactory.loadShape(randomX, randomY));
+                movableObjects.add(randomDetonatingObjectFactory.loadShape(randomX, randomY));*/
+
+                Detonator detonator = fallingObjectPool.borrowDetonator();
+
             }
         }
     }
