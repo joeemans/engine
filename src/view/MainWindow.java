@@ -68,15 +68,6 @@ public class MainWindow extends JFrame {
             menu.add(pauseMenuItem);
             menu.add(resumeMenuItem);
             menuBar.add(menu);
-
-//            Controller controller;
-//            if (difficultyState == null) {
-//                controller = new Controller(Circus.getGameInstance(), sensitivity);
-//            } else {
-//                controller = new Controller(Circus.getGameInstance(), difficultyState, sensitivity);
-//            }
-//            GameEngine.GameController gc =  GameEngine.start("Circus of Plates", controller.getCircus(), menuBar, Color.BLACK);
-//            gameFrame = (JFrame) menuBar.getParent().getParent().getParent();
             start();
 
             pauseMenuItem.addActionListener(e1 -> {
@@ -93,6 +84,8 @@ public class MainWindow extends JFrame {
                 // Handle the "Resume" menu item action
                 Circus.disposeInstance();
                 gameFrame.dispose();
+                timePaused = 0;
+                wasPaused = false;
                 start();
             });
 
