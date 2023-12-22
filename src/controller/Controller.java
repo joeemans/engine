@@ -28,8 +28,6 @@ public class Controller implements Observer {
         this.circus = circus;
         circus.addObserver(this);
         circus.getClown().addObserver(this);
-    //    startTime = System.currentTimeMillis();
-
         this.timeSinceLastPlate = System.currentTimeMillis();
         this.timeSinceLastBomb = System.currentTimeMillis();
 
@@ -126,20 +124,19 @@ public class Controller implements Observer {
 
     private void dropObjects() {
 
-        long currentTime = System.currentTimeMillis();
+        long currentTime = circus.getCountingTime() - circus.getTimePaused();
         long timeElapsedSinceLastPlate = currentTime - getTimeSinceLastPlate();
         long timeElapsedSinceLastBomb = currentTime - getTimeSinceLastBomb();
 
         int platesToDrop = (int) (plateRate * timeElapsedSinceLastPlate / 1000);
         int bombsToDrop = (int) (bombRate * timeElapsedSinceLastBomb / 1000);
 
-        long newTimeSinceDrop = System.currentTimeMillis();
 
         if (platesToDrop > 0) {
-            timeSinceLastPlate = newTimeSinceDrop;
+            timeSinceLastPlate = currentTime;
         }
         if (bombsToDrop > 0) {
-            timeSinceLastBomb = newTimeSinceDrop;
+            timeSinceLastBomb = currentTime;
         }
 
         for (int i = 0; i < Math.max(platesToDrop, bombsToDrop); i++) {
@@ -163,8 +160,7 @@ public class Controller implements Observer {
             setDifficulty(new HardDifficulty());
         } else if (score > 10) {
             setDifficulty(new MediumDifficulty());
-        }
-
+        } else setDifficulty(new EasyDifficulty());
     }
 
     @Override

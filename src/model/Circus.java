@@ -1,7 +1,6 @@
 package model;
 
 import controller.DynamicImageLoader;
-import model.shapes.Clown;
 import eg.edu.alexu.csd.oop.game.GameObject;
 import eg.edu.alexu.csd.oop.game.World;
 
@@ -12,6 +11,7 @@ import java.util.List;
 
 import controller.Subject;
 import controller.Observer;
+import view.MainWindow;
 
 public class Circus implements World, Subject {
     private static volatile Circus instance;
@@ -25,6 +25,7 @@ public class Circus implements World, Subject {
     private boolean timeout = false;
     private static final long GAME_TIME_SECONDS = 1000;
     private int sensitivity = 7;
+    private long timePaused;
 
     //List is an Interface which is implemented by ArrayList
     private final List<GameObject> constantObjects = new LinkedList<>();
@@ -50,7 +51,7 @@ public class Circus implements World, Subject {
     private Circus() {
 
         startingTime = System.currentTimeMillis();
-        countingTime = startingTime;
+        countingTime = getStartingTime();
 
         constantObjects.add(new ImageObject(0, 0, Type.BACKGROUND));
         for (int i=0 ; i < lives ; i++) {
@@ -79,7 +80,12 @@ public class Circus implements World, Subject {
     @Override
     public boolean refresh() {
         countingTime = System.currentTimeMillis();
-        if(countingTime > startingTime + 120 * GAME_TIME_SECONDS){
+        if(MainWindow.isWasPaused()){
+            long timeElapsedSincePause = getCountingTime() - MainWindow.getTimePaused();
+            timePaused = getTimePaused() + timeElapsedSincePause;
+             MainWindow.setWasPaused(false);
+        }
+        if(getCountingTime() > getStartingTime() + 120 * GAME_TIME_SECONDS){
             timeout = true;
         }
         while (!timeout && lives > 0) {
@@ -133,7 +139,7 @@ public class Circus implements World, Subject {
 
     @Override
     public String getStatus () {
-        long seconds = (120 * GAME_TIME_SECONDS + startingTime - countingTime) / 1000;
+        long seconds = (120 * GAME_TIME_SECONDS + getStartingTime() + getTimePaused() - getCountingTime()) / 1000;
         long minutes = seconds / 60;
         seconds %= 60;
         String timeRepresented = String.format("%d:%02d", minutes, seconds);
@@ -187,5 +193,17 @@ public class Circus implements World, Subject {
 
     public void setSensitivity(int sensitivity) {
         this.sensitivity = sensitivity;
+    }
+
+    public long getStartingTime() {
+        return startingTime;
+    }
+
+    public long getCountingTime() {
+        return countingTime;
+    }
+
+    public long getTimePaused() {
+        return timePaused;
     }
 }

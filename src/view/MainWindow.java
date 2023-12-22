@@ -18,6 +18,8 @@ public class MainWindow extends JFrame {
     private static final Dimension BUTTON_DIMENSION = new Dimension(200,100);
     private int sensitivity = 7;
     private DifficultyState difficultyState = new EasyDifficulty();
+    private static boolean wasPaused;
+    private static long timePaused;
 
 
     public MainWindow() {
@@ -69,12 +71,12 @@ public class MainWindow extends JFrame {
             GameEngine.GameController gc =  GameEngine.start("Circus of Plates", controller.getCircus(), menuBar, Color.BLACK);
 
             pauseMenuItem.addActionListener(e1 -> {
-                // Handle the "Pause" menu item action
+                setWasPaused(true);
+                setTimePaused(System.currentTimeMillis());
                 gc.pause();
             });
 
             resumeMenuItem.addActionListener(e1 -> {
-                // Handle the "Resume" menu item action
                 gc.resume();
             });
 
@@ -96,6 +98,22 @@ public class MainWindow extends JFrame {
 
     public static void main(String[] args) {
         new MainWindow();
+    }
+
+    public static boolean isWasPaused() {
+        return wasPaused;
+    }
+
+    public static void setWasPaused(boolean wasPaused) {
+        MainWindow.wasPaused = wasPaused;
+    }
+
+    public static long getTimePaused() {
+        return timePaused;
+    }
+
+    public static void setTimePaused(long timePaused) {
+        MainWindow.timePaused = timePaused;
     }
 
     public int getSensitivity() {
