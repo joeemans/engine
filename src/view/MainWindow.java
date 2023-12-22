@@ -40,6 +40,7 @@ public class MainWindow extends JFrame {
         exitButton.setFont(font);
         newGameButton.setBackground(Color.GRAY);
         newGameButton.setBounds(325,150,250,50);
+        newGameButton.setFocusPainted(false);
         imageLabel.add(newGameButton);
         optionsButton.setBackground(Color.GRAY);
         optionsButton.setBounds(325,300,250,50);
