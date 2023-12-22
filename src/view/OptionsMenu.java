@@ -72,7 +72,6 @@ public class OptionsMenu extends JFrame {
         confirmButton.addActionListener(e -> {
             String selectedDifficulty = (String) difficultyComboBox.getSelectedItem();
             int sensitivityValue = sensitivitySlider.getValue();
-            System.out.println(selectedDifficulty);
             mainMenu.setSensitivity(sensitivityValue);
 
             switch (selectedDifficulty){

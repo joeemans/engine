@@ -6,6 +6,7 @@ import controller.EasyDifficulty;
 import eg.edu.alexu.csd.oop.game.GameEngine;
 import model.Circus;
 
+import javax.naming.ldap.Control;
 import javax.swing.*;
 import java.awt.*;
 
@@ -20,6 +21,9 @@ public class MainWindow extends JFrame {
     private DifficultyState difficultyState = new EasyDifficulty();
     private static boolean wasPaused;
     private static long timePaused;
+    private JFrame gameFrame;
+    private JMenuBar menuBar;
+    GameEngine.GameController gc;
 
 
     public MainWindow() {
@@ -54,24 +58,26 @@ public class MainWindow extends JFrame {
 
         newGameButton.addActionListener(e -> {
             setVisible(false);
-            JMenuBar menuBar = new JMenuBar();
+            menuBar = new JMenuBar();
             JMenu menu = new JMenu("File");
-            JMenuItem newMenuItem = new JMenuItem("New");
+            JMenuItem newGame = new JMenuItem("New Game");
             JMenuItem pauseMenuItem = new JMenuItem("Pause");
             JMenuItem resumeMenuItem = new JMenuItem("Resume");
-            menu.add(newMenuItem);
+            menu.add(newGame);
             menu.addSeparator();
             menu.add(pauseMenuItem);
             menu.add(resumeMenuItem);
             menuBar.add(menu);
 
-            Controller controller;
-            if (difficultyState == null) {
-                controller = new Controller(Circus.getGameInstance(), sensitivity);
-            } else {
-                controller = new Controller(Circus.getGameInstance(), difficultyState, sensitivity);
-            }
-            GameEngine.GameController gc =  GameEngine.start("Circus of Plates", controller.getCircus(), menuBar, Color.BLACK);
+//            Controller controller;
+//            if (difficultyState == null) {
+//                controller = new Controller(Circus.getGameInstance(), sensitivity);
+//            } else {
+//                controller = new Controller(Circus.getGameInstance(), difficultyState, sensitivity);
+//            }
+//            GameEngine.GameController gc =  GameEngine.start("Circus of Plates", controller.getCircus(), menuBar, Color.BLACK);
+//            gameFrame = (JFrame) menuBar.getParent().getParent().getParent();
+            start();
 
             pauseMenuItem.addActionListener(e1 -> {
                 setWasPaused(true);
@@ -83,10 +89,11 @@ public class MainWindow extends JFrame {
                 gc.resume();
             });
 
-            newMenuItem.addActionListener(e12 -> {
+            newGame.addActionListener(e12 -> {
                 // Handle the "Resume" menu item action
                 Circus.disposeInstance();
-                gc.changeWorld(Circus.getGameInstance());
+                gameFrame.dispose();
+                start();
             });
 
 
@@ -98,6 +105,16 @@ public class MainWindow extends JFrame {
         exitButton.addActionListener(e -> dispose());
     }
 
+    private void start(){
+        Controller controller;
+        if (difficultyState == null) {
+            controller = new Controller(Circus.getGameInstance(), sensitivity);
+        } else {
+            controller = new Controller(Circus.getGameInstance(), difficultyState, sensitivity);
+        }
+        gc =  GameEngine.start("Circus of Plates", controller.getCircus(), menuBar, Color.BLACK);
+        gameFrame = (JFrame) menuBar.getParent().getParent().getParent();
+    }
 
     public static void main(String[] args) {
         new MainWindow();

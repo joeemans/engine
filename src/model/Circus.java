@@ -64,8 +64,6 @@ public class Circus implements World, Subject {
         clown = (UserControlled) userControlledObjectFactory.loadShape(getScreenWidth() / 2 - 110, SCREEN_HEIGHT / 2 + 70);
         controllableObjects.add(clown);
         clownWidth = clown.getWidth();
-//        Plate.setClownWidth(clown.getWidth());
-//        Plate.setScreenWidth(getWidth());
     }
 
     public static void disposeInstance() {
@@ -87,18 +85,20 @@ public class Circus implements World, Subject {
 
     @Override
     public boolean refresh() {
-        countingTime = System.currentTimeMillis();
-        if(MainWindow.isWasPaused()){
-            long timeElapsedSincePause = getCountingTime() - MainWindow.getTimePaused();
-            timePaused = getTimePaused() + timeElapsedSincePause;
-             MainWindow.setWasPaused(false);
-        }
-        if(getCountingTime() > getStartingTime() + 120 * GAME_TIME_SECONDS){
-            timeout = true;
-        }
-        while (!timeout && lives > 0) {
-            notifyObservers();
-            return true;
+        if(!timeout && lives > 0) {
+            countingTime = System.currentTimeMillis();
+            if (MainWindow.isWasPaused()) {
+                long timeElapsedSincePause = getCountingTime() - MainWindow.getTimePaused();
+                timePaused = getTimePaused() + timeElapsedSincePause;
+                MainWindow.setWasPaused(false);
+            }
+            if (getCountingTime() > getStartingTime() + timePaused + 120 * GAME_TIME_SECONDS) {
+                timeout = true;
+            }
+            if (!timeout && lives > 0) {
+                notifyObservers();
+                return true;
+            }
         }
         return false;
     }
