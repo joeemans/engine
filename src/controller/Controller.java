@@ -11,13 +11,8 @@ import java.util.List;
 
 public class Controller implements Observer {
     private DifficultyState difficulty;
-    private Circus circus;
+    private final Circus circus;
     private long score = 0;
-    private long highScore = 0;
-//    private final long startTime;
-//    private long countingTime;
-    private static final int STARTING_PLATES = 5;
-    private static final int PLATES_INCREMENTED = 2;
 
     private double plateRate;
     private double bombRate;
@@ -25,9 +20,9 @@ public class Controller implements Observer {
     private long timeSinceLastBomb;
     private static final int DEFAULT_TIME_BETWEEN_EXPLOSIONS = 3000;
 
-    private boolean harderOverTime;
+    private boolean harderOverTime = false;
 
-    private FallingObjectPool fallingObjectPool;
+    private final FallingObjectPool fallingObjectPool;
 
     public Controller(Circus circus) {
         this.circus = circus;
@@ -44,9 +39,11 @@ public class Controller implements Observer {
 
     }
 
-    public Controller(Circus circus, DifficultyState difficulty) {
+    public Controller(Circus circus, int sensitivity) {
         this(circus);
         setDifficulty(difficulty);
+        circus.setSensitivity(sensitivity);
+        this.harderOverTime = true;
     }
 
     public Controller(Circus circus, DifficultyState difficulty, int sensitivity) {
@@ -70,65 +67,64 @@ public class Controller implements Observer {
         updateDifficulty();
         dropObjects();
 
-            Iterator<GameObject> objectIterator = movableObjects.iterator();
-            while (objectIterator.hasNext()) {
-                GameObject currentObject = objectIterator.next();
+        Iterator<GameObject> objectIterator = movableObjects.iterator();
+        while (objectIterator.hasNext()) {
+            GameObject currentObject = objectIterator.next();
 
-                if (currentObject instanceof Faller){
-                    ((Faller) currentObject).setClownWidth(clown.getWidth());
-                    ((Faller) currentObject).setScreenWidth(circus.getWidth());
-                    ((Faller) currentObject).freeFall();
+            if (currentObject instanceof Faller){
+                ((Faller) currentObject).setClownWidth(clown.getWidth());
+                ((Faller) currentObject).setScreenWidth(circus.getWidth());
+                ((Faller) currentObject).freeFall();
+            }
+
+            if (currentObject instanceof Detonator) {
+                if (clown.catchBomb((Detonator) currentObject)) {
+                    ((Detonator) currentObject).detonate();
+                    constantObjects.add(currentObject);
+                    objectIterator.remove();
+                    circus.decrementLives();
+                } else if (circus.intersect(currentObject, clown)) {
+                    ((Detonator) currentObject).detonate();
+                    constantObjects.add(currentObject);
+                    objectIterator.remove();
+                    circus.decrementLives();
                 }
+            }
 
+            else {
+                Faller plate = (Faller)currentObject;
+
+                if (clown.catchPlate(plate)) {
+                    if (!((Clown)circus.getClown()).platesEmptied) {
+                        controllableObjects.add(currentObject);
+                    }
+                    ((Clown)circus.getClown()).platesEmptied = false;
+                    objectIterator.remove();
+                }
+            }
+
+            if (currentObject.getY() >= getCircus().getHeight()) {
+                objectIterator.remove();
                 if (currentObject instanceof Detonator) {
-                    if (clown.catchBomb((Detonator) currentObject)) {
-                        ((Detonator) currentObject).detonate();
-                        constantObjects.add(currentObject);
-                        objectIterator.remove();
-                        circus.decrementLives();
-                    } else if (circus.intersect(currentObject, clown)) {
-                        ((Detonator) currentObject).detonate();
-                        constantObjects.add(currentObject);
-                        objectIterator.remove();
-                        circus.decrementLives();
-                    }
+                    fallingObjectPool.returnDetonator((Detonator)currentObject);
                 }
-
-                else {
-                    Faller plate = (Faller)currentObject;
-
-                    if (clown.catchPlate(plate)) {
-                        if (!((Clown)circus.getClown()).platesEmptied) {
-                            controllableObjects.add(currentObject);
-                        }
-                        ((Clown)circus.getClown()).platesEmptied = false;
-                        objectIterator.remove();
-                    }
-                }
-
-                if (currentObject.getY() >= getCircus().getHeight()) {
-                    objectIterator.remove();
-                    if (currentObject instanceof Detonator) {
-                        fallingObjectPool.returnDetonator((Detonator)currentObject);
-                    }
-                    else{
-                        fallingObjectPool.returnFallingObject((Faller)currentObject);
-                    }
+                else{
+                    fallingObjectPool.returnFallingObject((Faller)currentObject);
                 }
             }
-            objectIterator = constantObjects.iterator();
-            while (objectIterator.hasNext()) {
-                GameObject currentObject = objectIterator.next();
+        }
+        objectIterator = constantObjects.iterator();
+        while (objectIterator.hasNext()) {
+            GameObject currentObject = objectIterator.next();
 
-                if (currentObject instanceof Detonator && System.currentTimeMillis() >
-                        ((Detonator) currentObject).getDetonatingTime() + DEFAULT_TIME_BETWEEN_EXPLOSIONS) {
-                    objectIterator.remove();
-                }
+            if (currentObject instanceof Detonator && System.currentTimeMillis() >
+                    ((Detonator) currentObject).getDetonatingTime() + DEFAULT_TIME_BETWEEN_EXPLOSIONS) {
+                objectIterator.remove();
             }
+        }
     }
 
     private void dropObjects() {
-        List<GameObject> movableObjects = getCircus().getMovableObjects();
 
         long currentTime = System.currentTimeMillis();
         long timeElapsedSinceLastPlate = currentTime - getTimeSinceLastPlate();
@@ -148,22 +144,11 @@ public class Controller implements Observer {
 
         for (int i = 0; i < Math.max(platesToDrop, bombsToDrop); i++) {
             if (i < platesToDrop) {
-                /*int randomX = (int) (Math.random() * getCircus().getWidth());
-                int randomY = (int) (Math.random() * getCircus().getHeight()) / 5;
-                ShapeLoader randomFallingObjectFactory = DynamicFileLinker.getRandomFallingObjectFactory();
-                movableObjects.add(randomFallingObjectFactory.loadShape(randomX, randomY));*/
-
-                //Faller plate = platePool.borrowPlate();
-                //movableObjects.add(plate);
 
                 Faller fallingObject = fallingObjectPool.borrowFallingObject();
 
             }
             if (i < bombsToDrop) {
-                /*int randomX = (int) (Math.random() * getCircus().getWidth());
-                int randomY = (int) (Math.random() * getCircus().getHeight()) / 5;
-                ShapeLoader randomDetonatingObjectFactory = DynamicFileLinker.getRandomDetonatingObjectFactory();
-                movableObjects.add(randomDetonatingObjectFactory.loadShape(randomX, randomY));*/
 
                 Detonator detonator = fallingObjectPool.borrowDetonator();
 
@@ -172,9 +157,14 @@ public class Controller implements Observer {
     }
 
     private void updateDifficulty() {
-        if (!harderOverTime) return;
+        if (!this.harderOverTime) return;
 
-        //TODO: UPDATE DIFFICULTY AFTER CERTAIN SCORE
+        if (score > 20) {
+            setDifficulty(new HardDifficulty());
+        } else if (score > 10) {
+            setDifficulty(new MediumDifficulty());
+        }
+
     }
 
     @Override
@@ -208,13 +198,6 @@ public class Controller implements Observer {
         return this.timeSinceLastBomb;
     }
 
-    private double getBombRate() {
-        return this.bombRate;
-    }
-
-    private double getPlateRate() {
-        return this.plateRate;
-    }
 }
 
 

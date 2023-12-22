@@ -57,53 +57,43 @@ public class OptionsMenu extends JFrame {
         confirmButton.setBounds(450, 300, 100, 100);
 
         // Add action listeners to buttons
-        mainMenuButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                mainMenu.setVisible(true);
-            }
+        mainMenuButton.addActionListener(e -> {
+            dispose();
+            mainMenu.setVisible(true);
         });
 
-        restoreDefaultButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                mainMenu.setDifficultyState(new EasyDifficulty());
-                mainMenu.setSensitivity(7);
-                sensitivitySlider.setValue(7);
-                difficultyComboBox.setSelectedIndex(0);
-            }
+        restoreDefaultButton.addActionListener(e -> {
+            mainMenu.setDifficultyState(new EasyDifficulty());
+            mainMenu.setSensitivity(7);
+            sensitivitySlider.setValue(7);
+            difficultyComboBox.setSelectedIndex(0);
         });
 
-        confirmButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedDifficulty = (String) difficultyComboBox.getSelectedItem();
-                int sensitivityValue = sensitivitySlider.getValue();
-                System.out.println(selectedDifficulty);
-               // mainMenu.setDifficultyState(selectedDifficulty);
-                mainMenu.setSensitivity(sensitivityValue);
-                switch (selectedDifficulty){
-                    case ("Easy"): {
-                        mainMenu.setDifficultyState(new EasyDifficulty());
-                        break;
-                    }
-                    case ("Medium"):{
-                        mainMenu.setDifficultyState(new MediumDifficulty());
-                        break;
-                    }
-                    case ("Hard"):{
-                        mainMenu.setDifficultyState(new HardDifficulty());
-                        break;
-                    }
-//                    case ("Dynamic"):{
-//                        mainMenu.setDifficultyState(new Dynamic());
-//                        break;
-//                    }
-                    default: break;
+        confirmButton.addActionListener(e -> {
+            String selectedDifficulty = (String) difficultyComboBox.getSelectedItem();
+            int sensitivityValue = sensitivitySlider.getValue();
+            System.out.println(selectedDifficulty);
+           // mainMenu.setDifficultyState(selectedDifficulty);
+            mainMenu.setSensitivity(sensitivityValue);
+
+            switch (selectedDifficulty){
+                case ("Easy"): {
+                    mainMenu.setDifficultyState(new EasyDifficulty());
+                    break;
                 }
-                mainMenu.setVisible(true);
-                dispose();
+                case ("Medium"):{
+                    mainMenu.setDifficultyState(new MediumDifficulty());
+                    break;
+                }
+                case ("Hard"):{
+                    mainMenu.setDifficultyState(new HardDifficulty());
+                    break;
+                }
+                case ("Dynamic"):{
+                    mainMenu.setDifficultyState(null);
+                    break;
+                }
+                default: break;
             }
         });
 

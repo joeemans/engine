@@ -3,18 +3,15 @@ package view;
 import controller.Controller;
 import controller.DifficultyState;
 import controller.EasyDifficulty;
-import controller.HardDifficulty;
 import eg.edu.alexu.csd.oop.game.GameEngine;
 import model.Circus;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 public class MainWindow extends JFrame {
     private JPanel panel;
-    private JButton newGameButton = new JButton("New Game");
     private JButton exitButton = new JButton("Exit");
     private JButton optionsButton = new JButton("Options");
     public static final Dimension WINDOW_DIMENSION = new Dimension(900, 700);
@@ -35,6 +32,7 @@ public class MainWindow extends JFrame {
         imageLabel.setSize(WINDOW_DIMENSION);
         this.add(imageLabel);
         Font font = new Font("Calibri", Font.BOLD, 18);
+        JButton newGameButton = new JButton("New Game");
         newGameButton.setFont(font);
         optionsButton.setFont(font);
         exitButton.setFont(font);
@@ -48,59 +46,51 @@ public class MainWindow extends JFrame {
         exitButton.setBounds(325,450,250,50);
         imageLabel.add(exitButton);
         setVisible(true);
-        newGameButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                setVisible(false);
-                JMenuBar menuBar = new JMenuBar();
-                JMenu menu = new JMenu("File");
-                JMenuItem newMenuItem = new JMenuItem("New");
-                JMenuItem pauseMenuItem = new JMenuItem("Pause");
-                JMenuItem resumeMenuItem = new JMenuItem("Resume");
-                menu.add(newMenuItem);
-                menu.addSeparator();
-                menu.add(pauseMenuItem);
-                menu.add(resumeMenuItem);
-                menuBar.add(menu);
-                Controller controller = new Controller(Circus.getGameInstance(), difficultyState, sensitivity) ;
 
-                GameEngine.GameController gc =  GameEngine.start("Circus of Plates", controller.getCircus(), menuBar, Color.BLACK);
+        newGameButton.addActionListener(e -> {
+            setVisible(false);
+            JMenuBar menuBar = new JMenuBar();
+            JMenu menu = new JMenu("File");
+            JMenuItem newMenuItem = new JMenuItem("New");
+            JMenuItem pauseMenuItem = new JMenuItem("Pause");
+            JMenuItem resumeMenuItem = new JMenuItem("Resume");
+            menu.add(newMenuItem);
+            menu.addSeparator();
+            menu.add(pauseMenuItem);
+            menu.add(resumeMenuItem);
+            menuBar.add(menu);
 
-                pauseMenuItem.addActionListener(e1 -> {
-                    // Handle the "Pause" menu item action
-                    gc.pause();
-                });
-
-                resumeMenuItem.addActionListener(e1 -> {
-                    // Handle the "Resume" menu item action
-                    gc.resume();
-                });
-
-                newMenuItem.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        // Handle the "Resume" menu item action
-                        Circus.disposeInstance();
-                        gc.changeWorld(Circus.getGameInstance());
-                    }
-                });
-
-
+            Controller controller;
+            if (difficultyState == null) {
+                controller = new Controller(Circus.getGameInstance(), sensitivity);
+            } else {
+                controller = new Controller(Circus.getGameInstance(), difficultyState, sensitivity);
             }
+            GameEngine.GameController gc =  GameEngine.start("Circus of Plates", controller.getCircus(), menuBar, Color.BLACK);
+
+            pauseMenuItem.addActionListener(e1 -> {
+                // Handle the "Pause" menu item action
+                gc.pause();
+            });
+
+            resumeMenuItem.addActionListener(e1 -> {
+                // Handle the "Resume" menu item action
+                gc.resume();
+            });
+
+            newMenuItem.addActionListener(e12 -> {
+                // Handle the "Resume" menu item action
+                Circus.disposeInstance();
+                gc.changeWorld(Circus.getGameInstance());
+            });
+
+
         });
-        optionsButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new OptionsMenu(MainWindow.this);
-                setVisible(false);
-            }
+        optionsButton.addActionListener(e -> {
+            new OptionsMenu(MainWindow.this);
+            setVisible(false);
         });
-        exitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
+        exitButton.addActionListener(e -> dispose());
     }
 
 

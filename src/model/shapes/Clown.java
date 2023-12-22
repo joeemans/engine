@@ -13,7 +13,7 @@ public class Clown extends ImageObject implements Subject, UserControlled {
 
     public ArrayList<GameObject> leftTray = new ArrayList<>();
     public ArrayList<GameObject> rightTray = new ArrayList<>();
-    private List<Observer> observers = new ArrayList<>();
+    private final List<Observer> observers = new ArrayList<>();
     public boolean platesEmptied;
 
 
@@ -56,7 +56,7 @@ public class Clown extends ImageObject implements Subject, UserControlled {
                 plate.setX((this.getX() + this.getWidth() / 2));
                 plate.setY(this.getY() - 10 - this.getRightTraySize() * 10);
                 ((Plate)plate).setInRightTray();
-                rightTray.add((GameObject) plate);
+                rightTray.add(plate);
                 notifyObserversOnCatchingPlates();
             }
             return true;
