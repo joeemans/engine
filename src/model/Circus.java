@@ -11,13 +11,12 @@ import java.util.List;
 
 import controller.Subject;
 import controller.Observer;
-import model.shapes.Plate;
 import view.MainWindow;
 
 public class Circus implements World, Subject {
     private static volatile Circus instance;
-    private final static int screenWidth = 900;
-    private final static int screenHeight = 700;
+    private final static int SCREEN_WIDTH = 900;
+    private final static int SCREEN_HEIGHT = 700;
     private static final int STARTING_PLATES = 5;
     private static final int PLATES_INCREMENTED = 2;
     private final long startingTime;
@@ -27,6 +26,7 @@ public class Circus implements World, Subject {
     private static final long GAME_TIME_SECONDS = 1000;
     private int sensitivity = 7;
     private long timePaused;
+    private static int clownWidth;
 
     //List is an Interface which is implemented by ArrayList
     private final List<GameObject> constantObjects = new LinkedList<>();
@@ -61,14 +61,19 @@ public class Circus implements World, Subject {
 
         DynamicFileLinker.shapesLoader();
         ShapeLoader userControlledObjectFactory = DynamicFileLinker.getRandomUserControlledShapeFactory();
-        clown = (UserControlled) userControlledObjectFactory.loadShape(screenWidth / 2 - 110, screenHeight / 2 + 70);
+        clown = (UserControlled) userControlledObjectFactory.loadShape(getScreenWidth() / 2 - 110, SCREEN_HEIGHT / 2 + 70);
         controllableObjects.add(clown);
-        Plate.setClownWidth(clown.getWidth());
-        Plate.setScreenWidth(getWidth());
+        clownWidth = clown.getWidth();
+//        Plate.setClownWidth(clown.getWidth());
+//        Plate.setScreenWidth(getWidth());
     }
 
     public static void disposeInstance() {
         instance = null;
+    }
+
+    public static int getScreenWidth() {
+        return SCREEN_WIDTH;
     }
 
     public UserControlled getClown() {
@@ -131,12 +136,12 @@ public class Circus implements World, Subject {
 
     @Override
     public int getWidth () {
-        return this.screenWidth;
+        return this.getScreenWidth();
     }
 
     @Override
     public int getHeight () {
-        return this.screenHeight;
+        return this.SCREEN_HEIGHT;
     }
 
 
@@ -193,5 +198,9 @@ public class Circus implements World, Subject {
 
     public long getTimePaused() {
         return timePaused;
+    }
+
+    public static int getClownWidth() {
+        return clownWidth;
     }
 }

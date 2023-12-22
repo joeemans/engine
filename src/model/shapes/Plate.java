@@ -1,5 +1,6 @@
 package model.shapes;
 
+import model.Circus;
 import model.Faller;
 import model.ImageObject;
 import model.Type;
@@ -13,6 +14,8 @@ public class Plate extends ImageObject implements Faller {
 
     public Plate(int x, int y, Type type) {
         super(x, y, type);
+        clownWidth = Circus.getClownWidth();
+        screenWidth= Circus.getScreenWidth();
     }
 
     @Override
@@ -48,15 +51,6 @@ public class Plate extends ImageObject implements Faller {
 
     public void setInLeftTray() {
         this.inLeftTray = true;
-    }
-
-
-    public static void setClownWidth(int clownWidth){
-        Plate.clownWidth = clownWidth;
-    }
-
-    public static void setScreenWidth(int screenWidth){
-        Plate.screenWidth = screenWidth;
     }
 
 }
