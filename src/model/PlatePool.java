@@ -23,7 +23,6 @@ class PlatePool {
             int randomType = (int) (Math.random() * 4) + 1;
             circus.getMovableObjects().add(new Plate(randomX, randomY, Type.getByValue(randomType)));
         }
-
     }
 
     Faller borrowPlate(int x, int y, int type){

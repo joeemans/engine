@@ -14,12 +14,10 @@ public abstract class DynamicFileLinker {
     public static void shapesLoader() {
         File packageDirectory = new File("src\\model\\shapes\\factories");
         File[] files = packageDirectory.listFiles((dir, name) -> name.endsWith(".java"));
-        System.out.println(packageDirectory);
 
         if (files != null){
             for (File indexedFile : files){
                 String className = SHAPES_DESTINATION_PACKAGE + "." + indexedFile.getName().replace(".java", "");
-                System.out.println(className);
                 try {
                     Class <?> classLoader = Class.forName(className);
                     Object objectLoader = classLoader.getDeclaredConstructor().newInstance();
@@ -27,15 +25,12 @@ public abstract class DynamicFileLinker {
                     if (objectLoader instanceof ShapeLoader && !((ShapeLoader)objectLoader).getControllable()){
                         Object sample = ((ShapeLoader) objectLoader).loadShape(0,0);
                         if (sample instanceof Detonator){
-                            System.out.println(1);
                             detonatingObjectShape.add((ShapeLoader) objectLoader);
                         } else if (sample instanceof Faller) {
-                            System.out.println(3);
                             fallingObjects.add((ShapeLoader) objectLoader);
                         }
                     }
                     else if (objectLoader instanceof ShapeLoader && ((ShapeLoader)objectLoader).getControllable()){
-                        System.out.println(2);
                         userControlledShapes.add((ShapeLoader) objectLoader);
                     }
                 } catch (Exception e) {

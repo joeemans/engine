@@ -14,10 +14,6 @@ public class ImageObject implements GameObject {
     private Type type;
     private boolean isVisible;
 
-//    //convenience constructor that defaults the "type" to 0, when type isn't specified
-//    public ImageObject(int x, int y, String fileName){
-//        this(x, y, fileName, Type.getByValue(0));
-//    }
 
     //constructor that allows specifying the "type"
     public ImageObject(int x, int y, Type type){

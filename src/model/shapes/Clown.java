@@ -37,7 +37,7 @@ public class Clown extends ImageObject implements Subject, UserControlled {
                 plate.setX(this.getX());
                 plate.setY(this.getY() - 40 - this.getLeftTraySize() * 10);
                 ((Plate)plate).setInLeftTray();
-                leftTray.add((GameObject) plate);
+                leftTray.add(plate);
                 notifyObserversOnCatchingPlates();
             }
             return true;
@@ -51,8 +51,6 @@ public class Clown extends ImageObject implements Subject, UserControlled {
         if(Math.abs(plate.getX() + plate.getWidth() - this.getX() - this.getWidth()) <= plate.getWidth()/2
                 && (375 - (getRightTraySize() * 10)) - plate.getY() <= 10
                 && plate.getY() < 375 - (getRightTraySize() * 10) ) {
-
-            System.out.println("CAUGHT WITH RIGHT!");
 
             if(! checkConsecutivePlatesOnRight(((Plate)plate).getType().getColor())) {
                 plate.setX((this.getX() + this.getWidth() / 2));

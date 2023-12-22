@@ -15,8 +15,8 @@ public class Controller implements Observer {
     private Circus circus;
     private long score = 0;
     private long highScore = 0;
-    private final long startTime;
-    private long countingTime;
+//    private final long startTime;
+//    private long countingTime;
     private static final int STARTING_PLATES = 5;
     private static final int PLATES_INCREMENTED = 2;
 
@@ -26,13 +26,13 @@ public class Controller implements Observer {
     private long timeSinceLastBomb;
     private static final int DEFAULT_TIME_BETWEEN_EXPLOSIONS = 3000;
 
-    private boolean harderOverTime = true;
+    private boolean harderOverTime;
 
     public Controller(Circus circus) {
         this.circus = circus;
         circus.addObserver(this);
         circus.getClown().addObserver(this);
-        startTime = System.currentTimeMillis();
+    //    startTime = System.currentTimeMillis();
 
         this.timeSinceLastPlate = System.currentTimeMillis();
         this.timeSinceLastBomb = System.currentTimeMillis();
@@ -44,7 +44,12 @@ public class Controller implements Observer {
     public Controller(Circus circus, DifficultyState difficulty) {
         this(circus);
         setDifficulty(difficulty);
-        this.harderOverTime = false;
+    }
+
+    public Controller(Circus circus, DifficultyState difficulty, int sensitivity) {
+        this(circus);
+        setDifficulty(difficulty);
+        circus.setSensitivity(sensitivity);
     }
 
     public void setDifficulty(DifficultyState difficulty) {
@@ -95,13 +100,11 @@ public class Controller implements Observer {
                         }
                         ((Clown)circus.getClown()).platesEmptied = false;
                         objectIterator.remove();
-                        System.out.println(((Clown)circus.getClown()).getLeftTraySize());
                     }
                 }
 
                 if (currentObject.getY() >= getCircus().getHeight()) {
                     objectIterator.remove();
-                    System.out.println("Object removed");
                 }
             }
             objectIterator = constantObjects.iterator();

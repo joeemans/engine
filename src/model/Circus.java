@@ -24,13 +24,12 @@ public class Circus implements World, Subject {
     private int lives = 5;
     private boolean timeout = false;
     private static final long GAME_TIME_SECONDS = 1000;
+    private int sensitivity = 7;
 
     //List is an Interface which is implemented by ArrayList
     private final List<GameObject> constantObjects = new LinkedList<>();
     private final List<GameObject> movableObjects = new LinkedList<>();
     private final List<GameObject> controllableObjects = new LinkedList<>();
-
-//    PlatePool platePool;
 
     private UserControlled clown;
     long score = 0;
@@ -62,8 +61,6 @@ public class Circus implements World, Subject {
         ShapeLoader userControlledObjectFactory = DynamicFileLinker.getRandomUserControlledShapeFactory();
         clown = (UserControlled) userControlledObjectFactory.loadShape(screenWidth / 2 - 110, screenHeight / 2 + 70);
         controllableObjects.add(clown);
-
-//        platePool = new PlatePool(this);
     }
 
     public static void disposeInstance() {
@@ -71,7 +68,7 @@ public class Circus implements World, Subject {
     }
 
     public UserControlled getClown() {
-        return (Clown) clown;
+        return clown;
     }
 
     @Override
@@ -149,7 +146,7 @@ public class Circus implements World, Subject {
 
     @Override
     public int getControlSpeed () {
-        return 7;
+        return sensitivity;
     }
 
     @Override
@@ -184,4 +181,11 @@ public class Circus implements World, Subject {
         //
     }
 
+    public int getSensitivity() {
+        return sensitivity;
+    }
+
+    public void setSensitivity(int sensitivity) {
+        this.sensitivity = sensitivity;
+    }
 }

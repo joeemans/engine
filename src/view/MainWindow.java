@@ -1,6 +1,8 @@
 package view;
 
 import controller.Controller;
+import controller.DifficultyState;
+import controller.EasyDifficulty;
 import controller.HardDifficulty;
 import eg.edu.alexu.csd.oop.game.GameEngine;
 import model.Circus;
@@ -17,6 +19,8 @@ public class MainWindow extends JFrame {
     private JButton optionsButton = new JButton("Options");
     public static final Dimension WINDOW_DIMENSION = new Dimension(900, 700);
     private static final Dimension BUTTON_DIMENSION = new Dimension(200,100);
+    private int sensitivity = 7;
+    private DifficultyState difficultyState = new EasyDifficulty();
 
 
     public MainWindow() {
@@ -30,7 +34,10 @@ public class MainWindow extends JFrame {
         JLabel imageLabel = new JLabel(imageIcon);
         imageLabel.setSize(WINDOW_DIMENSION);
         this.add(imageLabel);
-      //  newGameButton.setSize(BUTTON_DIMENSION);
+        Font font = new Font("Calibri", Font.BOLD, 18);
+        newGameButton.setFont(font);
+        optionsButton.setFont(font);
+        exitButton.setFont(font);
         newGameButton.setBackground(Color.GRAY);
         newGameButton.setBounds(325,150,250,50);
         imageLabel.add(newGameButton);
@@ -55,7 +62,7 @@ public class MainWindow extends JFrame {
                 menu.add(pauseMenuItem);
                 menu.add(resumeMenuItem);
                 menuBar.add(menu);
-                Controller controller = new Controller(Circus.getGameInstance(),new HardDifficulty()) ;
+                Controller controller = new Controller(Circus.getGameInstance(), difficultyState, sensitivity) ;
 
                 GameEngine.GameController gc =  GameEngine.start("Circus of Plates", controller.getCircus(), menuBar, Color.BLACK);
 
@@ -81,11 +88,17 @@ public class MainWindow extends JFrame {
 
             }
         });
+        optionsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new OptionsMenu(MainWindow.this);
+                setVisible(false);
+            }
+        });
         exitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-
             }
         });
     }
@@ -95,4 +108,19 @@ public class MainWindow extends JFrame {
         new MainWindow();
     }
 
+    public int getSensitivity() {
+        return sensitivity;
+    }
+
+    public void setSensitivity(int sensitivity) {
+        this.sensitivity = sensitivity;
+    }
+
+    public DifficultyState getDifficultyState() {
+        return difficultyState;
+    }
+
+    public void setDifficultyState(DifficultyState difficultyState) {
+        this.difficultyState = difficultyState;
+    }
 }
